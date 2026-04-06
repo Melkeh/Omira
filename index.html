@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Omira Systems develops counter-EW C2, next-generation sensors for C-UAS, and training and advisory for contested environments." />
+  <title>Omira Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #04070c;
+      --bg-soft: #081019;
+      --line: rgba(255,255,255,0.10);
+      --line-strong: rgba(255,255,255,0.18);
+      --text: rgba(255,255,255,0.96);
+      --muted: rgba(255,255,255,0.62);
+      --soft: rgba(255,255,255,0.34);
+      --accent: rgba(122, 168, 255, 0.28);
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    linear-gradient(rgba(3, 6, 11, 0.45), rgba(3, 6, 11, 0.55)),
+    url("background.png") center center / cover no-repeat;
+  overflow-x: hidden;
+}
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.14), rgba(0,0,0,0.95));
+      opacity: 0.3;
+    }
+
+    .shell {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(180deg, rgba(3,6,10,0.82), rgba(3,6,10,0.42));
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .topbar-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.14);
+      background:
+        radial-gradient(circle at 50% 50%, rgba(122,168,255,0.18), transparent 58%),
+        linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.01));
+      box-shadow: inset 0 0 18px rgba(122,168,255,0.08), 0 0 24px rgba(122,168,255,0.08);
+    }
+
+    .brand-name,
+    h1,
+    h2 {
+      font-family: "Bebas Neue", Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      font-weight: 400;
+    }
+
+    .brand-name {
+      font-size: 1.95rem;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    .status {
+      color: var(--soft);
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .hero {
+      min-height: calc(100vh - 74px);
+      display: flex;
+      align-items: center;
+      padding: 70px 0 88px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.8fr);
+      gap: 56px;
+      align-items: end;
+    }
+
+    .eyebrow,
+    .offer-index,
+    .footer-label {
+      color: var(--soft);
+      font-size: 0.76rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 16px 0 18px;
+      font-size: clamp(4.3rem, 10vw, 8.6rem);
+      line-height: 0.9;
+      letter-spacing: 0.03em;
+      max-width: 7.2ch;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+    }
+
+    .hero-subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.7;
+      max-width: 44ch;
+    }
+
+    .hero-side {
+      border-left: 1px solid var(--line);
+      padding-left: 28px;
+      display: grid;
+      gap: 18px;
+      align-self: center;
+    }
+
+    .hero-side-line {
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    .offerings {
+      padding: 0 0 84px;
+    }
+
+    .offers {
+      border-top: 1px solid var(--line);
+    }
+
+    .offer {
+      display: grid;
+      grid-template-columns: 90px minmax(0, 1fr) minmax(220px, 300px);
+      gap: 24px;
+      align-items: start;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .offer-name {
+      margin: 0;
+      font-family: "Bebas Neue", Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      line-height: 0.94;
+      letter-spacing: 0.03em;
+    }
+
+    .offer-copy {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.65;
+      max-width: 36ch;
+    }
+
+    .offer-tag {
+      justify-self: end;
+      text-align: right;
+      color: var(--soft);
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1.6;
+    }
+
+    .footer {
+      padding: 0 0 26px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--soft);
+      font-size: 0.86rem;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .offer {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 54px;
+      }
+
+      .hero-side {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+        padding-left: 0;
+        padding-top: 20px;
+      }
+
+      .offer {
+        gap: 12px;
+      }
+
+      .offer-tag {
+        justify-self: start;
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        width: min(calc(100% - 24px), var(--max));
+      }
+
+      .topbar-inner {
+        min-height: 68px;
+      }
+
+      .status {
+        display: none;
+      }
+
+      .hero {
+        padding-bottom: 64px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a href="#top" class="brand" aria-label="Omira Systems home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">Omira Systems</span>
+      </a>
+      <div class="status"></div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Omira</div>
+          <h1>Combat Forged Operational Superiority</h1>
+          <p class="hero-subtitle">
+            Founded by Ukraine war veterans, Omira draws its name from Mímir, the Norse embodiment of wisdom and knowledge earned through sacrifice, and orrusta, the Old Norse word for war, reflecting both our origins and our mission.
+          </p>
+        </div>
+
+        <div class="hero-side" aria-label="Company focus">
+          <div class="hero-side-line">Next-Gen C-UAS Detection and Tracking</div>
+          <div class="hero-side-line">Next-Gen Electronic Warfare Capabilities</div>
+          <div class="hero-side-line">Ukraine-Derived Drone Warfare Training</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="offerings">
+      <div class="shell offers">
+        <article class="offer" aria-labelledby="systems-title">
+          <div class="offer-index">01</div>
+          <div>
+            <h2 class="offer-name" id="systems-title">Omira Systems</h2>
+            <div class="offer-copy">We develop next-generation EW and C-UAS sensing systems informed by extensive combat experience in Ukraine and a deep understanding of the operational realities and emerging challenges of the modern battlefield.</div>
+          </div>
+          <div class="offer-tag">Development</div>
+        </article>
+
+        <article class="offer" aria-labelledby="vanguard-title">
+          <div class="offer-index">02</div>
+          <div>
+            <h2 class="offer-name" id="vanguard-title">Omira Vanguard</h2>
+            <div class="offer-copy">We deliver combat-informed training, doctrine and technology transfer, and operational advisory support that translate hard-won lessons from Ukraine into practical capability for today’s battlefield.</div>
+          </div>
+          <div class="offer-tag">Advisory</div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-inner">
+      <span>© <span id="year"></span> Omira Systems</span>
+      <span class="footer-label">Colibri Defense Dynamics Inc, DBA Omira Systems</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
