@@ -1,338 +1,527 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Omira Systems develops counter-EW C2, next-generation sensors for C-UAS, and training and advisory for contested environments." />
-  <title>Omira Systems</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #04070c;
-      --bg-soft: #081019;
-      --line: rgba(255,255,255,0.10);
-      --line-strong: rgba(255,255,255,0.18);
-      --text: rgba(255,255,255,0.96);
-      --muted: rgba(255,255,255,0.62);
-      --soft: rgba(255,255,255,0.34);
-      --accent: rgba(122, 168, 255, 0.28);
-      --max: 1200px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omira Systems | Counter-EW C2, C-UAS Sensing, Combat-Informed Training</title>
+<meta name="description" content="Omira Systems develops counter-EW command and control, next-generation C-UAS sensing, and combat-informed training and advisory, built on direct experience from the war in Ukraine.">
+<meta property="og:title" content="Omira Systems">
+<meta property="og:description" content="Combat Forged Operational Superiority. Counter-EW C2, next-generation C-UAS sensing, and combat-informed training and advisory.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.omirasystems.com/">
+<style>
+:root{
+  --bg:#0B1322;
+  --bg-2:#0E1728;
+  --panel:#111C30;
+  --line:rgba(148,170,205,.16);
+  --line-soft:rgba(148,170,205,.09);
+  --text:#E9EEF6;
+  --muted:#93A1B8;
+  --faint:#5E6C82;
+  --accent:#3D7BFF;
+  --accent-soft:rgba(61,123,255,.13);
+  --mono:"SF Mono",ui-monospace,"Cascadia Mono",Menlo,Consolas,monospace;
+  --sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--accent);color:#fff}
 
-    * { box-sizing: border-box; }
+/* ---------- shared ---------- */
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+.section{padding:104px 0;border-top:1px solid var(--line-soft)}
+.section-head{max-width:680px;margin-bottom:56px}
+.section-head h2{
+  font-size:clamp(28px,4vw,40px);
+  font-weight:700;
+  letter-spacing:-.015em;
+  line-height:1.15;
+  margin-top:14px;
+}
+.section-head p{color:var(--muted);margin-top:16px}
+a{color:inherit}
 
-    html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: var(--text);
-  background:
-    linear-gradient(rgba(3, 6, 11, 0.45), rgba(3, 6, 11, 0.55)),
-    url("background.png") center center / cover no-repeat;
-  overflow-x: hidden;
+/* ---------- nav ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:rgba(11,19,34,.82);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line-soft);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+}
+.brand{
+  display:flex;align-items:baseline;gap:10px;
+  text-decoration:none;
+}
+.brand-name{font-weight:700;font-size:17px;letter-spacing:.02em}
+.brand-tag{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--faint);text-transform:uppercase}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{
+  text-decoration:none;color:var(--muted);
+  font-size:14px;letter-spacing:.02em;
+  transition:color .15s ease;
+}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.cta{
+  color:var(--text);
+  border:1px solid var(--line);
+  padding:8px 16px;border-radius:3px;
+  transition:border-color .15s ease,background .15s ease;
+}
+.nav-links a.cta:hover{border-color:var(--accent);background:var(--accent-soft)}
+@media (max-width:720px){
+  .nav-links a:not(.cta){display:none}
 }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 72px 72px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.14), rgba(0,0,0,0.95));
-      opacity: 0.3;
-    }
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  padding:190px 0 120px;
+  overflow:hidden;
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(var(--line-soft) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(ellipse 90% 70% at 50% 20%,#000 30%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 20%,#000 30%,transparent 75%);
+}
+.hero .wrap{position:relative}
+.hero h1{
+  font-size:clamp(40px,6.6vw,76px);
+  font-weight:700;
+  line-height:1.03;
+  letter-spacing:-.025em;
+  max-width:14ch;
+  margin-top:20px;
+}
+.hero .eyebrow.hero-divisions{display:inline-block;margin-top:26px}
+.section-head p{color:var(--muted);margin-top:16px;text-wrap:pretty}
+.hero-sub{
+  color:var(--muted);
+  font-size:clamp(17px,2vw,20px);
+  max-width:56ch;
+  margin-top:26px;
+}
+/* spectrum signature */
+.spectrum-wrap{
+  position:relative;
+  margin-top:72px;
+  border:1px solid var(--line);
+  border-radius:4px;
+  background:linear-gradient(180deg,var(--bg-2),var(--bg));
+  overflow:hidden;
+}
+.spectrum-label{
+  position:absolute;top:12px;left:14px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  color:var(--faint);text-transform:uppercase;
+  display:flex;gap:16px;
+}
+.spectrum-label .live{color:var(--accent)}
+canvas#spectrum{display:block;width:100%;height:190px}
+.spectrum-note{
+  position:absolute;bottom:12px;right:14px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.12em;
+  color:var(--faint);text-transform:uppercase;
+}
 
-    .shell {
-      width: min(calc(100% - 40px), var(--max));
-      margin: 0 auto;
-    }
+/* ---------- pillars ---------- */
+.pillars{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--line-soft);
+  border:1px solid var(--line-soft);
+  border-radius:4px;overflow:hidden;
+}
+.pillar{
+  background:var(--bg-2);
+  padding:38px 32px 42px;
+  transition:background .2s ease;
+}
+.pillar:hover{background:var(--panel)}
+.pillar .designator{
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  color:var(--faint);text-transform:uppercase;
+}
+.pillar h3{
+  font-size:21px;font-weight:700;letter-spacing:-.01em;
+  margin:16px 0 12px;line-height:1.25;
+}
+.pillar p{color:var(--muted);font-size:15.5px}
+@media (max-width:860px){.pillars{grid-template-columns:1fr}}
+.pillars.cols-2{grid-template-columns:repeat(2,1fr)}
+.pillars.cols-4{grid-template-columns:repeat(4,1fr)}
+.pillars.cols-4 .pillar{padding:32px 26px 36px}
+.pillars.cols-4 h3{font-size:18px}
+@media (max-width:1000px){.pillars.cols-4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:860px){.pillars.cols-2{grid-template-columns:1fr}}
+@media (max-width:600px){.pillars.cols-4{grid-template-columns:1fr}}
 
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(180deg, rgba(3,6,10,0.82), rgba(3,6,10,0.42));
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
+/* ---------- origin ---------- */
+.origin{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:64px;align-items:start;
+}
+.origin-name{
+  font-family:var(--mono);
+  color:var(--faint);
+  font-size:13px;letter-spacing:.06em;
+  line-height:2.1;
+  border-left:2px solid var(--accent);
+  padding-left:20px;
+}
+.origin-name b{color:var(--text);font-weight:600}
+.origin-body p{color:var(--muted);font-size:17px}
+.origin-body p+p{margin-top:18px}
+.origin-body .lede{color:var(--text);font-size:20px;line-height:1.5}
+@media (max-width:860px){.origin{grid-template-columns:1fr;gap:36px}}
 
-    .topbar-inner {
-      min-height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
+/* ---------- provenance ---------- */
+.prov-list{border-top:1px solid var(--line)}
+.prov-item{
+  display:grid;grid-template-columns:210px 1fr;gap:32px;
+  padding:30px 0;border-bottom:1px solid var(--line);
+}
+.prov-item .k{
+  font-family:var(--mono);font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);padding-top:4px;
+}
+.prov-item .v{color:var(--muted);font-size:16px;max-width:64ch}
+.prov-item .v b{color:var(--text);font-weight:600}
+@media (max-width:720px){.prov-item{grid-template-columns:1fr;gap:8px}}
 
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: inherit;
-    }
+/* ---------- contact ---------- */
+.contact{
+  text-align:left;
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:64px 48px;
+  background:
+    radial-gradient(ellipse 60% 120% at 85% 0%,var(--accent-soft),transparent 60%),
+    linear-gradient(180deg,var(--bg-2),var(--bg));
+}
+.contact h2{font-size:clamp(26px,3.6vw,36px);font-weight:700;letter-spacing:-.015em;margin-top:14px;max-width:22ch}
+.contact p{color:var(--muted);margin-top:16px;max-width:58ch}
+.contact-lines{margin-top:34px;display:flex;flex-direction:column;gap:6px}
+.contact-lines span{color:var(--text);font-size:18px;font-weight:600}
+.contact-lines a{
+  color:var(--text);font-size:22px;font-weight:700;letter-spacing:-.01em;
+  text-decoration:none;border-bottom:2px solid var(--accent);
+  width:fit-content;padding-bottom:2px;
+}
+.contact-lines a:hover{color:var(--accent)}
 
-    .brand-mark {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.14);
-      background:
-        radial-gradient(circle at 50% 50%, rgba(122,168,255,0.18), transparent 58%),
-        linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.01));
-      box-shadow: inset 0 0 18px rgba(122,168,255,0.08), 0 0 24px rgba(122,168,255,0.08);
-    }
+/* ---------- footer ---------- */
+footer{padding:44px 0 56px}
+.foot{
+  display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+  color:var(--faint);font-size:13px;
+}
+.foot .fmono{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
 
-    .brand-name,
-    h1,
-    h2 {
-      font-family: "Bebas Neue", Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-      font-weight: 400;
-    }
-
-    .brand-name {
-      font-size: 1.95rem;
-      letter-spacing: 0.04em;
-      line-height: 1;
-    }
-
-    .status {
-      color: var(--soft);
-      font-size: 0.8rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .hero {
-      min-height: calc(100vh - 74px);
-      display: flex;
-      align-items: center;
-      padding: 70px 0 88px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.8fr);
-      gap: 56px;
-      align-items: end;
-    }
-
-    .eyebrow,
-    .offer-index,
-    .footer-label {
-      color: var(--soft);
-      font-size: 0.76rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 16px 0 18px;
-      font-size: clamp(4.3rem, 10vw, 8.6rem);
-      line-height: 0.9;
-      letter-spacing: 0.03em;
-      max-width: 7.2ch;
-    }
-
-    .hero-copy {
-      max-width: 760px;
-    }
-
-    .hero-subtitle {
-      margin: 0;
-      color: var(--muted);
-      font-size: 1.02rem;
-      line-height: 1.7;
-      max-width: 44ch;
-    }
-
-    .hero-side {
-      border-left: 1px solid var(--line);
-      padding-left: 28px;
-      display: grid;
-      gap: 18px;
-      align-self: center;
-    }
-
-    .hero-side-line {
-      color: var(--muted);
-      font-size: 0.98rem;
-      line-height: 1.6;
-    }
-
-    .offerings {
-      padding: 0 0 84px;
-    }
-
-    .offers {
-      border-top: 1px solid var(--line);
-    }
-
-    .offer {
-      display: grid;
-      grid-template-columns: 90px minmax(0, 1fr) minmax(220px, 300px);
-      gap: 24px;
-      align-items: start;
-      padding: 30px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .offer-name {
-      margin: 0;
-      font-family: "Bebas Neue", Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-      font-size: clamp(2.2rem, 4vw, 3rem);
-      line-height: 0.94;
-      letter-spacing: 0.03em;
-    }
-
-    .offer-copy {
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.65;
-      max-width: 36ch;
-    }
-
-    .offer-tag {
-      justify-self: end;
-      text-align: right;
-      color: var(--soft);
-      font-size: 0.82rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      line-height: 1.6;
-    }
-
-    .footer {
-      padding: 0 0 26px;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      color: var(--soft);
-      font-size: 0.86rem;
-    }
-
-    @media (max-width: 920px) {
-      .hero-grid,
-      .offer {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: auto;
-        padding-top: 54px;
-      }
-
-      .hero-side {
-        border-left: 0;
-        border-top: 1px solid var(--line);
-        padding-left: 0;
-        padding-top: 20px;
-      }
-
-      .offer {
-        gap: 12px;
-      }
-
-      .offer-tag {
-        justify-self: start;
-        text-align: left;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .shell {
-        width: min(calc(100% - 24px), var(--max));
-      }
-
-      .topbar-inner {
-        min-height: 68px;
-      }
-
-      .status {
-        display: none;
-      }
-
-      .hero {
-        padding-bottom: 64px;
-      }
-    }
-  </style>
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+</style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="shell topbar-inner">
-      <a href="#top" class="brand" aria-label="Omira Systems home">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-name">Omira Systems</span>
-      </a>
-      <div class="status"></div>
-    </div>
-  </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">Omira</div>
-          <h1>Combat Forged Operational Superiority</h1>
-          <p class="hero-subtitle">
-            Founded by Ukraine war veterans, Omira draws its name from Mímir, the Norse embodiment of wisdom and knowledge earned through sacrifice, and orrusta, the Old Norse word for war, reflecting our origins and our mission.
-          </p>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Omira Systems home">
+      <span class="brand-name">OMIRA</span>
+      <span class="brand-tag">Systems</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#systems">Systems</a>
+      <a href="#advisory">Advisory</a>
+      <a href="#about">About</a>
+      <a class="cta" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="wrap">
+      <span class="eyebrow">EW &middot; C-UAS &middot; Training &amp; Advisory</span>
+      <h1>Combat Forged Operational Superiority</h1>
+      <span class="eyebrow hero-divisions">Two Divisions, One Mission</span>
+      <p class="hero-sub">Omira develops counter-EW command and control, next-generation C-UAS sensing, and combat-informed training and advisory, built on direct experience from the battlefields of Ukraine.</p>
+
+      <div class="spectrum-wrap" aria-hidden="true">
+        <div class="spectrum-label">
+          <span class="live">&#9679; LINKS HELD</span>
+          <span>CONTESTED SPECTRUM</span>
         </div>
+        <canvas id="spectrum" height="190"></canvas>
+        <div class="spectrum-note">Designed for denied environments</div>
+      </div>
+    </div>
+  </section>
 
-        <div class="hero-side" aria-label="Company focus">
-          <div class="hero-side-line">Next-Gen C-UAS Detection and Tracking</div>
-          <div class="hero-side-line">Next-Gen Electronic Warfare Capabilities</div>
-          <div class="hero-side-line">Ukraine-Derived Drone Warfare Training</div>
+  <!-- OMIRA SYSTEMS -->
+  <section class="section" id="systems">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">01 &middot; Omira Systems &middot; Development</span>
+        <h2>The battlefield wrote the requirements</h2>
+        <p>We develop next-generation EW and C-UAS sensing systems informed by extensive combat experience in Ukraine and a deep understanding of the operational realities and emerging challenges of the modern battlefield. Every capability answers a problem our team met in combat, not one imagined in a lab.</p>
+      </div>
+      <div class="pillars cols-2">
+        <div class="pillar reveal">
+          <span class="designator">SENSE</span>
+          <h3>Next-Gen C-UAS Detection and Tracking</h3>
+          <p>Layered sensing built for low, slow, and small threats in cluttered, contested airspace, engineered around how modern drone attacks actually unfold and the limitations of current technologies we observed on the battlefield.</p>
+        </div>
+        <div class="pillar reveal">
+          <span class="designator">CONNECT</span>
+          <h3>Counter-EW Command and Control</h3>
+          <p>In Ukraine, electronic warfare is terrain, and units maneuver through it the way they maneuver through ground. We build communications and C2 designed to hold the link inside that terrain, against modern jamming, at combat tempo. Our radios adapt dynamically, intelligently, and in real time to the conditions around them.</p>
         </div>
       </div>
-    </section>
-
-    <section class="offerings">
-      <div class="shell offers">
-        <article class="offer" aria-labelledby="systems-title">
-          <div class="offer-index">01</div>
-          <div>
-            <h2 class="offer-name" id="systems-title">Omira Systems</h2>
-            <div class="offer-copy">We develop next-generation EW and C-UAS sensing systems informed by extensive combat experience in Ukraine and a deep understanding of the operational realities and emerging challenges of the modern battlefield.</div>
-          </div>
-          <div class="offer-tag">Development</div>
-        </article>
-
-        <article class="offer" aria-labelledby="vanguard-title">
-          <div class="offer-index">02</div>
-          <div>
-            <h2 class="offer-name" id="vanguard-title">Omira Vanguard</h2>
-            <div class="offer-copy">We deliver combat-informed training, doctrine development, technology transfer, and operational advisory support that convert hard-won lessons from Ukraine into practical battlefield capability for the modern operational environment.</div>
-          </div>
-          <div class="offer-tag">Advisory</div>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="shell footer-inner">
-      <span>© <span id="year"></span> Omira Systems</span>
-      <span class="footer-label">Colibri Defense Dynamics Inc, DBA Omira Systems</span>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <!-- OMIRA VANGUARD -->
+  <section class="section" id="advisory">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">02 &middot; Omira Vanguard &middot; Advisory</span>
+        <h2>The formation is the weapon</h2>
+        <p>The visible lesson from Ukraine is that cheap drones destroy expensive vehicles. The deeper lesson is that the drone itself decides very little. What decides the fight is the formation built around it, the decision architecture that keeps its kill chain alive, and the speed at which the force adapts. That is what Omira Vanguard builds in a partner force.</p>
+      </div>
+      <div class="pillars cols-4">
+        <div class="pillar reveal">
+          <span class="designator">TRAIN</span>
+          <h3>Drone Warfare Training</h3>
+          <p>Operator-to-commander instruction derived from frontline service, for the fight as it is today.</p>
+        </div>
+        <div class="pillar reveal">
+          <span class="designator">DOCTRINE</span>
+          <h3>Doctrine Development</h3>
+          <p>Formation design and decision architecture for forces that must fight through the spectrum and under drone-saturated skies.</p>
+        </div>
+        <div class="pillar reveal">
+          <span class="designator">RED TEAM</span>
+          <h3>Red Teaming</h3>
+          <p>A combat-experienced drone opposition force that shows what battlefield reality really looks like before it has to be learned under fire.</p>
+        </div>
+        <div class="pillar reveal">
+          <span class="designator">ADVISE</span>
+          <h3>Operational Advisory</h3>
+          <p>Capability development and technology transfer support from the people who have shaped the current drone war and its technologies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / ORIGIN -->
+  <section class="section" id="about">
+    <div class="wrap origin">
+      <div class="origin-name reveal">
+        <b>OMIRA</b><br>
+        from <b>M&iacute;mir</b>, the Norse embodiment of wisdom<br>
+        and knowledge earned through sacrifice,<br>
+        and <b>orrusta</b>, the Old Norse word for war.
+      </div>
+      <div class="origin-body reveal">
+        <p class="lede">Omira was founded by veterans of the war in Ukraine, a battlefield where no advantage holds for long and the force that adapts fastest beats the force with the best equipment.</p>
+        <p>Our founders flew drones in combat as servicemembers of the Ukrainian Armed Forces, worked on the technology behind them, and advised commanders on electronic warfare and drone warfare at the battalion level, where technology and tactics have to fuse or fail.</p>
+        <p>That experience defines how we work. We build and advise from the harshest lessons of the modern battlefield so that the cost of that knowledge is paid once and not relearned in the next war.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROVENANCE -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Why Omira</span>
+        <h2>Provenance you can pressure-test</h2>
+      </div>
+      <div class="prov-list">
+        <div class="prov-item reveal">
+          <span class="k">Combat-Derived</span>
+          <span class="v"><b>Every requirement traces to the front line.</b> Our systems and curricula are shaped by direct experience operating drones and fighting electronic warfare under fire, not by assumptions about it.</span>
+        </div>
+        <div class="prov-item reveal">
+          <span class="k">Operationally Current</span>
+          <span class="v"><b>The threat evolves constantly. So do we.</b> Continuous contact with the operational environment keeps our understanding of drone warfare and the electromagnetic fight current, not archival.</span>
+        </div>
+        <div class="prov-item reveal">
+          <span class="k">End-to-End</span>
+          <span class="v"><b>From capability to competence.</b> Development, doctrine, training, and advisory under one roof, so technology arrives with the knowledge required to employ it.</span>
+        </div>
+        <div class="prov-item reveal">
+          <span class="k">In the Room</span>
+          <span class="v"><b>Pressure-tested where the debate happens.</b> Our perspective is presented on stage at the National Guard Association of the United States, the International Stability Operations Association, and the Association of Old Crows, and in briefings with U.S. general officers, U.S. Congressmen, and allied defense leaders.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="contact reveal">
+        <span class="eyebrow">Contact</span>
+        <h2>Talk to the people who fought the problem</h2>
+        <p>For defense organizations, allied governments, and partners: reach out to discuss capabilities, training, or collaboration.</p>
+        <div class="contact-lines">
+          <span>General Inquiries</span>
+          <a href="mailto:info@omirasystems.com">info@omirasystems.com</a>
+          <span>Washington DC</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>&copy; <span id="yr"></span> Colibri Defense Dynamics Inc, DBA Omira Systems. Washington DC. All rights reserved.</span>
+    <span class="fmono">Omira Systems &middot; Omira Vanguard</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* Scroll reveal */
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!reduce && 'IntersectionObserver' in window) {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+}
+
+/* Spectrum signature: a live spectrum trace with a protected notch that holds */
+(function () {
+  const canvas = document.getElementById('spectrum');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w, h, dpr;
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = canvas.clientWidth;
+    h = canvas.clientHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const N = 160;
+  const noise = new Array(N).fill(0);
+  let t = 0;
+
+  /* four protected links, unevenly spaced */
+  const links = [
+    { cx: 0.13, lh: 0.46, ph: 0.0 },
+    { cx: 0.34, lh: 0.55, ph: 1.7 },
+    { cx: 0.62, lh: 0.52, ph: 3.1 },
+    { cx: 0.81, lh: 0.48, ph: 4.6 }
+  ];
+  const notchW = 0.045;
+
+  function frame() {
+    t += 0.016;
+    ctx.clearRect(0, 0, w, h);
+    const base = h * 0.78;
+
+    /* hostile noise floor */
+    ctx.beginPath();
+    for (let i = 0; i < N; i++) {
+      const x = (i / (N - 1)) * w;
+      const fx = i / (N - 1);
+      /* jitter target */
+      const target =
+        18 + 26 * Math.abs(Math.sin(fx * 21 + t * 2.1)) +
+        16 * Math.abs(Math.sin(fx * 47 - t * 3.3)) +
+        10 * Math.random();
+      /* jammers sweep and surge */
+      const surge = 34 * Math.exp(-Math.pow((fx - (0.5 + 0.42 * Math.sin(t * 0.5))) * 9, 2));
+      let amp = target + surge;
+      /* protected notches: noise suppressed where the links live */
+      for (const L of links) {
+        const dist = Math.abs(fx - L.cx);
+        if (dist < notchW) amp *= Math.pow(dist / notchW, 2) * 0.5;
+      }
+      noise[i] += (amp - noise[i]) * 0.18;
+      const y = base - noise[i];
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.strokeStyle = 'rgba(147,161,184,0.55)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    /* fill under noise */
+    ctx.lineTo(w, base); ctx.lineTo(0, base); ctx.closePath();
+    ctx.fillStyle = 'rgba(147,161,184,0.06)';
+    ctx.fill();
+
+    /* the links: steady carriers inside their notches */
+    for (const L of links) {
+      const lx = L.cx * w;
+      const pulse = 0.75 + 0.25 * Math.sin(t * 4 + L.ph);
+      const lh = h * L.lh;
+      const grad = ctx.createLinearGradient(0, base - lh, 0, base);
+      grad.addColorStop(0, 'rgba(61,123,255,' + (0.95 * pulse) + ')');
+      grad.addColorStop(1, 'rgba(61,123,255,0.15)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(lx - 1.5, base - lh, 3, lh);
+      ctx.beginPath();
+      ctx.arc(lx, base - lh, 3.2, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(61,123,255,' + pulse + ')';
+      ctx.fill();
+    }
+
+    /* baseline */
+    ctx.fillStyle = 'rgba(148,170,205,0.25)';
+    ctx.fillRect(0, base, w, 1);
+
+    if (!reduce) requestAnimationFrame(frame);
+  }
+
+  if (reduce) { t = 3; for (let k = 0; k < 40; k++) frame(); }
+  else requestAnimationFrame(frame);
+})();
+</script>
+
 </body>
 </html>
