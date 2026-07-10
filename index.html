@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Omira Systems | Counter-EW C2, C-UAS Sensing, Combat-Informed Training</title>
-<meta name="description" content="Omira Systems develops counter-EW command and control, next-generation C-UAS sensing, and combat-informed training and advisory, built on direct experience from the war in Ukraine.">
+<meta name="description" content="Omira Systems develops counter-EW command and control, layered C-UAS sensing, and combat-informed training and advisory, built on direct experience from the war in Ukraine.">
 <meta property="og:title" content="Omira Systems">
-<meta property="og:description" content="Combat Forged Operational Superiority. Counter-EW C2, next-generation C-UAS sensing, and combat-informed training and advisory.">
+<meta property="og:description" content="We fought the drone war. Now we build for it. Counter-EW command and control, layered C-UAS sensing, and combat-informed training and advisory.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.omirasystems.com/">
 <meta property="og:site_name" content="Omira Systems">
@@ -15,11 +15,15 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Omira Systems">
-<meta name="twitter:description" content="Combat Forged Operational Superiority. Counter-EW C2, next-generation C-UAS sensing, and combat-informed training and advisory.">
+<meta name="twitter:description" content="We fought the drone war. Now we build for it. Counter-EW command and control, layered C-UAS sensing, and combat-informed training and advisory.">
 <meta name="twitter:image" content="https://www.omirasystems.com/og-image.png">
 <link rel="canonical" href="https://www.omirasystems.com/">
+<!-- Favicon: the O monogram (BDS Sec 02, monogram is for favicons only) -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<meta name="theme-color" content="#0B1322">
+<meta name="theme-color" content="#1B212C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..600&family=Inter:wght@400..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -28,7 +32,7 @@
   "legalName": "Colibri Defense Dynamics Inc",
   "url": "https://www.omirasystems.com/",
   "logo": "https://www.omirasystems.com/og-image.png",
-  "description": "Omira Systems develops counter-EW command and control, next-generation C-UAS sensing, and combat-informed training and advisory, built on direct experience from the war in Ukraine.",
+  "description": "Omira Systems develops counter-EW command and control, layered C-UAS sensing, and combat-informed training and advisory, built on direct experience from the war in Ukraine.",
   "email": "info@omirasystems.com",
   "address": {
     "@type": "PostalAddress",
@@ -40,19 +44,22 @@
 }
 </script>
 <style>
+/* ============================================================
+   OMIRA-BDS-100 / IDENTITY STANDARD V2.0
+   Graphite system. Field 66 / Surface 19 / Text 12 / Amber 3.
+   ============================================================ */
 :root{
-  --bg:#0B1322;
-  --bg-2:#0E1728;
-  --panel:#111C30;
-  --line:rgba(148,170,205,.16);
-  --line-soft:rgba(148,170,205,.09);
-  --text:#E9EEF6;
-  --muted:#93A1B8;
-  --faint:#5E6C82;
-  --accent:#3D7BFF;
-  --accent-soft:rgba(61,123,255,.13);
-  --mono:"SF Mono",ui-monospace,"Cascadia Mono",Menlo,Consolas,monospace;
-  --sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --field:#1B212C;        /* background, one notch above black */
+  --surface:#242C39;      /* cards, raised panels */
+  --line:#3B4554;         /* borders, ticks. never text */
+  --steel:#A2ACBC;        /* labels, footers. 7.1 */
+  --haze:#C9D0DB;         /* body text. 10.4 */
+  --lume:#F2F3EF;         /* headlines. 14.5 */
+  --amber:#FFB000;        /* the accent. marks the answer */
+  --amber-soft:rgba(255,176,0,.10);
+  --mono:"JetBrains Mono","Cascadia Mono",Menlo,Consolas,monospace;
+  --sans:"Inter",Arial,sans-serif;
+  --display:"Archivo",Arial,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -61,70 +68,78 @@ html{scroll-behavior:smooth}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
 body{
-  background:var(--bg);
-  color:var(--text);
+  background:var(--field);
+  color:var(--haze);
   font-family:var(--sans);
-  font-size:17px;
+  font-size:15px;
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
 }
 p,li,span.v,.prov-item .v,.contact-lines span,.spectrum-note,figcaption{text-wrap:pretty}
-h1,h2,h3{text-wrap:balance}
-::selection{background:var(--accent);color:#fff}
+h1,h2,h3{text-wrap:balance;color:var(--lume)}
+::selection{background:var(--amber);color:#14181F}
+:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
 
 /* ---------- shared ---------- */
-.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
 .eyebrow{
   font-family:var(--mono);
   font-size:12px;
-  letter-spacing:.18em;
+  letter-spacing:.12em;
   text-transform:uppercase;
-  color:var(--accent);
+  color:var(--amber);
 }
-.section{padding:104px 0;border-top:1px solid var(--line-soft)}
+.section{padding:80px 0;border-top:1px solid var(--line)}
 .section-head{max-width:680px;margin-bottom:56px}
+.section-head .eyebrow-lg{font-size:clamp(15px,1.7vw,20px)}
 .section-head h2{
-  font-size:clamp(28px,4vw,40px);
-  font-weight:700;
-  letter-spacing:-.015em;
-  line-height:1.15;
-  margin-top:14px;
+  font-family:var(--display);
+  font-size:clamp(26px,3.5vw,32px);
+  font-weight:500;
+  line-height:1.2;
+  margin-top:16px;
 }
-.section-head p{color:var(--muted);margin-top:16px}
+.section-head p{color:var(--haze);margin-top:16px}
 a{color:inherit}
 
 /* ---------- nav ---------- */
 header{
   position:fixed;top:0;left:0;right:0;z-index:50;
-  background:rgba(11,19,34,.82);
+  background:rgba(27,33,44,.88);
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--line-soft);
+  border-bottom:1px solid var(--line);
 }
 .nav{
   display:flex;align-items:center;justify-content:space-between;
   height:64px;
 }
 .brand{
-  display:flex;align-items:baseline;gap:10px;
   text-decoration:none;
 }
-.brand-name{font-weight:700;font-size:17px;letter-spacing:.02em}
-.brand-tag{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--faint);text-transform:uppercase}
-.nav-links{display:flex;gap:28px;align-items:center}
+/* Wordmark: Archivo Expanded 500, tracked. Never bold. */
+.brand-name{
+  font-family:var(--display);
+  font-stretch:125%;
+  font-weight:500;
+  font-size:16px;
+  letter-spacing:.16em;
+  color:var(--lume);
+}
+.nav-links{display:flex;gap:32px;align-items:center}
 .nav-links a{
-  text-decoration:none;color:var(--muted);
+  text-decoration:none;color:var(--steel);
   font-size:14px;letter-spacing:.02em;
   transition:color .15s ease;
 }
-.nav-links a:hover{color:var(--text)}
+.nav-links a:hover{color:var(--lume)}
 .nav-links a.cta{
-  color:var(--text);
+  color:var(--lume);
   border:1px solid var(--line);
-  padding:8px 16px;border-radius:3px;
-  transition:border-color .15s ease,background .15s ease;
+  padding:8px 16px;border-radius:2px;
+  transition:border-color .15s ease;
 }
-.nav-links a.cta:hover{border-color:var(--accent);background:var(--accent-soft)}
+.nav-links a.cta:hover{border-color:var(--amber)}
 @media (max-width:720px){
   .nav-links a:not(.cta){display:none}
 }
@@ -132,83 +147,118 @@ header{
 /* ---------- hero ---------- */
 .hero{
   position:relative;
-  padding:190px 0 120px;
+  padding:176px 0 96px;
   overflow:hidden;
-}
-.hero-grid{
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(var(--line-soft) 1px,transparent 1px),
-    linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
-  background-size:56px 56px;
-  mask-image:radial-gradient(ellipse 90% 70% at 50% 20%,#000 30%,transparent 75%);
-  -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 20%,#000 30%,transparent 75%);
+  background:radial-gradient(ellipse 100% 80% at 50% -5%,#232B3A 0%,transparent 62%);
 }
 .hero .wrap{position:relative}
+/* EW is terrain: faint contour field under the hero */
+.hero-terrain{
+  position:absolute;inset:0;
+  -webkit-mask-image:radial-gradient(ellipse 95% 85% at 50% 10%,#000 30%,transparent 80%);
+  mask-image:radial-gradient(ellipse 95% 85% at 50% 10%,#000 30%,transparent 80%);
+}
+.hero-terrain svg{width:100%;height:100%;display:block}
+.hero-terrain path{fill:none;stroke:var(--line);stroke-width:1;opacity:.45}
+/* Section background art: one visual language, four subjects */
+.section{position:relative;overflow:hidden}
+.section .wrap{position:relative;z-index:1}
+.bg-art{position:absolute;inset:0;z-index:0;pointer-events:none}
+.bg-art svg{width:100%;height:100%;display:block}
+.bg-art :is(path,rect,circle,ellipse,line,polyline){fill:none;stroke:var(--line);stroke-width:1;opacity:.5}
+.bg-art .f{fill:var(--line);stroke:none;opacity:.4}
+.bg-art path.ghost{fill:var(--line);fill-opacity:.08}
+.bg-art.loud :is(path,rect,circle,ellipse,line,polyline){opacity:.65}
+/* film grain: the field is a material, not a hex code */
+body::after{
+  content:"";position:fixed;inset:0;z-index:120;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+/* The wordmark lockup: one line, Archivo Expanded 500, tracked, never bold */
+/* The mark: OMIRA with its descriptor justified to exactly the same width */
+.mark{display:table;font-size:clamp(36px,4.8vw,62px)}
 .hero h1{
-  font-size:clamp(40px,6.6vw,76px);
-  font-weight:700;
-  line-height:1.03;
-  letter-spacing:-.025em;
-  max-width:14ch;
-  margin-top:20px;
+  font-family:var(--display);
+  font-stretch:125%;
+  font-size:1em;
+  font-weight:500;
+  line-height:1.1;
+  letter-spacing:.26em;
+  margin-right:-.26em; /* trailing tracking would skew the width match */
 }
-.hero .eyebrow.hero-divisions{display:inline-block;margin-top:26px}
+.hero .hero-kicker{
+  display:block;
+  margin-top:16px;
+  font-size:.2269em; /* sized from glyph metrics to span OMIRA's width */
+  letter-spacing:.1em;
+  text-align:justify;
+  text-align-last:justify;
+}
+@media (max-width:720px){
+  .hero .hero-kicker{font-size:11px;text-align:left;text-align-last:auto}
+}
+.hero-verdict{
+  font-family:var(--display);
+  font-stretch:125%;
+  font-size:clamp(34px,5vw,54px);
+  font-weight:500;
+  line-height:1.15;
+  color:var(--lume);
+  margin-top:40px;
+}
 .hero-sub{
-  color:var(--muted);
-  font-size:clamp(17px,2vw,20px);
+  color:var(--haze);
+  font-size:clamp(15px,1.8vw,17px);
   max-width:56ch;
-  margin-top:26px;
+  margin-top:24px;
 }
-/* spectrum signature */
+/* FIG 01: link survival under jamming. Amber marks the answer. */
 .spectrum-wrap{
   position:relative;
-  margin-top:72px;
+  margin-top:64px;
   border:1px solid var(--line);
-  border-radius:4px;
-  background:linear-gradient(180deg,var(--bg-2),var(--bg));
+  border-radius:2px;
+  background:linear-gradient(180deg,var(--surface),var(--field));
   overflow:hidden;
 }
 .spectrum-label{
-  position:absolute;top:12px;left:14px;
-  font-family:var(--mono);font-size:10px;letter-spacing:.14em;
-  color:var(--faint);text-transform:uppercase;
+  position:absolute;top:16px;left:16px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+  color:var(--steel);text-transform:uppercase;
   display:flex;gap:16px;
 }
-.spectrum-label .live{color:var(--accent)}
+.spectrum-label .live{color:var(--amber)}
 canvas#spectrum{display:block;width:100%;height:190px}
 .spectrum-note{
-  position:absolute;bottom:12px;right:14px;
-  font-family:var(--mono);font-size:10px;letter-spacing:.12em;
-  color:var(--faint);text-transform:uppercase;
+  position:absolute;bottom:16px;right:16px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+  color:var(--steel);text-transform:uppercase;
 }
 
 /* ---------- pillars ---------- */
 .pillars{
   display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-  background:var(--line-soft);
-  border:1px solid var(--line-soft);
-  border-radius:4px;overflow:hidden;
+  background:var(--line);
+  border:1px solid var(--line);
+  border-radius:2px;overflow:hidden;
 }
 .pillar{
-  background:var(--bg-2);
-  padding:38px 32px 42px;
-  transition:background .2s ease;
+  background:var(--surface);
+  padding:40px 32px;
 }
-.pillar:hover{background:var(--panel)}
 .pillar .designator{
-  font-family:var(--mono);font-size:11px;letter-spacing:.16em;
-  color:var(--faint);text-transform:uppercase;
+  font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+  color:var(--steel);text-transform:uppercase;
 }
 .pillar h3{
-  font-size:21px;font-weight:700;letter-spacing:-.01em;
-  margin:16px 0 12px;line-height:1.25;
+  font-size:20px;font-weight:600;
+  margin:16px 0 8px;line-height:1.3;
 }
-.pillar p{color:var(--muted);font-size:15.5px}
+.pillar p{color:var(--haze);font-size:15px}
 @media (max-width:860px){.pillars{grid-template-columns:1fr}}
 .pillars.cols-2{grid-template-columns:repeat(2,1fr)}
 .pillars.cols-4{grid-template-columns:repeat(4,1fr)}
-.pillars.cols-4 .pillar{padding:32px 26px 36px}
+.pillars.cols-4 .pillar{padding:32px 24px}
 .pillars.cols-4 h3{font-size:18px}
 @media (max-width:1000px){.pillars.cols-4{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:860px){.pillars.cols-2{grid-template-columns:1fr}}
@@ -220,58 +270,67 @@ canvas#spectrum{display:block;width:100%;height:190px}
 }
 .origin-name{
   font-family:var(--mono);
-  color:var(--faint);
-  font-size:13px;letter-spacing:.06em;
+  color:var(--steel);
+  font-size:13px;letter-spacing:.04em;
   line-height:2.1;
-  border-left:2px solid var(--accent);
-  padding-left:20px;
+  border-left:2px solid var(--amber);
+  padding-left:24px;
 }
-.origin-name b{color:var(--text);font-weight:600}
-.origin-body p{color:var(--muted);font-size:17px}
-.origin-body p+p{margin-top:18px}
-.origin-body .lede{color:var(--text);font-size:20px;line-height:1.5}
-@media (max-width:860px){.origin{grid-template-columns:1fr;gap:36px}}
+.origin-name b{color:var(--lume);font-weight:500}
+.origin-body p{color:var(--haze);font-size:15px}
+.origin-body p+p{margin-top:16px}
+.origin-body .lede{color:var(--lume);font-size:20px;font-weight:500;line-height:1.5}
+@media (max-width:860px){.origin{grid-template-columns:1fr;gap:40px}}
 
 /* ---------- provenance ---------- */
 .prov-list{border-top:1px solid var(--line)}
 .prov-item{
-  display:grid;grid-template-columns:210px 1fr;gap:32px;
-  padding:30px 0;border-bottom:1px solid var(--line);
+  display:grid;grid-template-columns:216px 1fr;gap:32px;
+  padding:32px 0;border-bottom:1px solid var(--line);
 }
 .prov-item .k{
-  font-family:var(--mono);font-size:12px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--accent);padding-top:4px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--amber);padding-top:4px;
 }
-.prov-item .v{color:var(--muted);font-size:16px;max-width:64ch}
-.prov-item .v b{color:var(--text);font-weight:600}
+.prov-item .v{color:var(--haze);font-size:15px;max-width:64ch}
+.prov-item .v b{color:var(--lume);font-weight:600}
 @media (max-width:720px){.prov-item{grid-template-columns:1fr;gap:8px}}
 
 /* ---------- contact ---------- */
 .contact{
   text-align:left;
   border:1px solid var(--line);
-  border-radius:4px;
+  border-radius:2px;
   padding:64px 48px;
   background:
-    radial-gradient(ellipse 60% 120% at 85% 0%,var(--accent-soft),transparent 60%),
-    linear-gradient(180deg,var(--bg-2),var(--bg));
+    radial-gradient(ellipse 60% 120% at 85% 0%,var(--amber-soft),transparent 60%),
+    linear-gradient(180deg,var(--surface),var(--field));
 }
-.contact h2{font-size:clamp(26px,3.6vw,36px);font-weight:700;letter-spacing:-.015em;margin-top:14px;max-width:22ch}
-.contact p{color:var(--muted);margin-top:16px;max-width:58ch}
-.contact-lines{margin-top:34px;display:flex;flex-direction:column;gap:6px}
-.contact-lines span{color:var(--text);font-size:18px;font-weight:600}
+.contact h2{
+  font-family:var(--display);
+  font-size:clamp(26px,3.5vw,32px);
+  font-weight:500;margin-top:16px;max-width:24ch;
+}
+.contact p{color:var(--haze);margin-top:16px;max-width:58ch}
+.contact-lines{margin-top:32px;display:flex;flex-direction:column;gap:8px}
+.contact-lines span{
+  font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--steel);
+}
 .contact-lines a{
-  color:var(--text);font-size:22px;font-weight:700;letter-spacing:-.01em;
-  text-decoration:none;border-bottom:2px solid var(--accent);
+  font-family:var(--mono);
+  color:var(--lume);font-size:20px;font-weight:500;
+  text-decoration:none;border-bottom:2px solid var(--amber);
   width:fit-content;padding-bottom:2px;
 }
-.contact-lines a:hover{color:var(--accent)}
+.contact-lines a:hover{color:var(--amber)}
+@media (max-width:600px){.contact{padding:48px 24px}.contact-lines a{font-size:16px}}
 
 /* ---------- footer ---------- */
-footer{padding:44px 0 56px}
+footer{padding:48px 0 56px}
 .foot{
-  display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
-  color:var(--faint);font-size:13px;
+  display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
+  color:var(--steel);font-size:13px;
 }
 .foot .fmono{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
 
@@ -284,9 +343,8 @@ footer{padding:44px 0 56px}
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#top" aria-label="Omira Systems home">
+    <a class="brand" href="#top" aria-label="Omira home">
       <span class="brand-name">OMIRA</span>
-      <span class="brand-tag">Systems</span>
     </a>
     <nav class="nav-links" aria-label="Main">
       <a href="#about">About</a>
@@ -301,17 +359,21 @@ footer{padding:44px 0 56px}
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-terrain" aria-hidden="true">
+      <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"><path d="M827 894L826 882L824 870L822 863L819 852L816 845L811 834L808 828L804 821L798 812L792 804L786 798L780 792L774 787L768 782L762 779L751 774L744 772L732 769L720 769L708 770L696 773L690 775L678 780L672 783L666 787L659 792L652 798L646 804L641 810L636 816L630 824L624 834L621 840L618 846L614 858L612 864L609 876L608 888"/><path d="M545 468L552 467L564 463L570 460L576 456L584 450L590 444L595 438L600 431L606 421L609 414L612 405L614 396L615 384L614 372L612 365L607 354L602 348L596 342L588 336L582 333L576 330L564 326L558 324L546 321L534 320L522 318L511 318L504 318L497 318L486 318L474 319L462 321L450 322L441 324L432 326L422 330L414 335L409 342L408 348L408 357L410 366L414 376L418 384L421 390L426 397L432 406L438 414L444 420L449 426L456 432L462 438L468 442L474 447L480 451L489 456L498 460L504 463L516 466L526 468L534 469L545 468"/><path d="M859 894L858 885L857 876L855 864L852 854L850 846L846 836L843 828L840 822L834 810L831 804L828 798L822 789L816 780L812 774L807 768L802 762L795 756L787 750L780 746L774 743L762 739L756 737L744 736L732 736L720 737L714 738L702 741L692 744L684 747L678 750L666 756L660 760L654 764L648 769L642 774L635 780L629 786L624 792L618 800L612 808L607 816L604 822L600 829L595 840L593 846L589 858L588 864L585 876L584 888"/><path d="M981 0L981 12L982 24L982 36L983 48L984 60L984 66L985 78L987 90L988 102L989 114L990 122L991 132L993 144L995 156L996 164L998 174L1001 186L1003 192L1008 203L1013 210L1019 216L1026 220L1032 222L1044 224L1056 223L1062 222L1074 218L1080 214L1087 210L1095 204L1101 198L1106 192L1111 186L1116 178L1121 168L1123 162L1128 150L1129 144L1132 132L1134 122L1135 114L1136 102L1138 90L1138 78L1139 66L1139 54L1140 42L1140 30L1140 18L1140 10L1140 0"/><path d="M571 504L582 500L588 496L595 492L604 486L611 480L617 474L622 468L627 462L632 456L637 450L642 442L648 433L652 426L656 420L660 413L666 403L670 396L673 390L678 381L683 372L686 366L690 356L692 348L690 336L686 330L679 324L672 319L666 315L660 311L650 306L642 303L636 300L624 296L618 294L606 290L599 288L588 285L576 283L570 282L558 279L546 277L536 276L528 275L516 273L504 271L497 270L486 268L474 265L468 263L456 260L450 257L438 252L432 248L426 245L419 240L411 234L404 228L398 222L392 216L386 210L381 204L375 198L369 192L364 186L357 180L351 174L343 168L336 163L330 160L320 156L312 154L300 153L288 154L277 156L270 158L261 162L252 167L246 171L240 176L234 181L228 187L222 195L216 204L213 210L210 217L206 228L204 237L202 246L201 258L201 270L201 282L203 294L204 302L206 312L210 323L213 330L216 337L222 346L228 354L234 359L240 364L246 367L256 372L264 375L272 378L282 381L290 384L300 388L306 390L318 395L324 397L333 402L342 407L348 410L354 414L363 420L372 426L378 431L384 435L390 439L396 444L405 450L413 456L420 461L426 465L432 469L440 474L449 480L456 484L462 487L472 492L480 495L486 498L498 502L505 504L516 507L528 508L540 509L552 508L564 506L571 504"/><path d="M878 426L888 421L894 416L900 411L906 404L912 396L915 390L918 384L923 372L925 366L928 354L930 342L930 330L927 318L924 312L918 304L912 299L904 294L894 290L885 288L876 286L864 285L852 285L840 285L828 286L817 288L810 289L798 292L792 294L780 299L774 302L766 306L756 312L750 317L744 324L740 330L739 342L744 350L750 358L756 364L762 370L768 376L774 381L780 386L786 391L792 396L800 402L808 408L816 413L822 416L829 420L840 425L846 427L858 429L870 428L878 426"/><path d="M1137 762L1146 760L1157 756L1164 753L1172 750L1182 745L1188 741L1194 738L1204 732L1212 726L1218 722L1224 718L1230 713L1236 708L1242 702L1248 696L1254 688L1260 678L1262 672L1264 660L1261 648L1258 642L1254 634L1248 624L1244 618L1240 612L1235 606L1230 599L1224 590L1218 582L1214 576L1210 570L1205 564L1200 556L1194 548L1188 540L1183 534L1177 528L1171 522L1164 517L1158 514L1146 512L1134 513L1125 516L1116 521L1110 525L1104 530L1098 535L1092 541L1086 546L1080 552L1074 558L1068 564L1062 570L1055 576L1049 582L1042 588L1036 594L1029 600L1023 606L1017 612L1011 618L1006 624L1002 630L997 642L998 654L1002 663L1006 672L1010 678L1014 684L1020 692L1026 701L1031 708L1036 714L1041 720L1046 726L1052 732L1058 738L1065 744L1073 750L1080 755L1086 758L1098 762L1104 763L1116 764L1128 764L1137 762"/><path d="M898 894L897 882L895 870L894 864L891 852L888 843L885 834L882 826L878 816L876 810L871 798L869 792L864 780L862 774L858 763L856 756L852 745L850 738L846 726L844 720L840 710L835 702L828 696L822 693L810 690L798 690L786 691L774 692L762 694L750 696L744 697L732 700L723 702L714 705L704 708L696 711L688 714L678 718L672 722L664 726L654 732L648 736L642 741L636 746L630 751L624 756L618 762L612 769L606 776L600 784L594 792L590 798L586 804L582 811L577 822L574 828L570 838L567 846L564 857L562 864L560 876L559 888"/><path d="M300 0L300 7L299 18L296 30L294 36L288 48L285 54L281 60L276 68L270 75L264 82L258 88L252 94L246 100L240 106L234 112L228 118L222 124L216 131L210 138L205 144L201 150L197 156L192 164L187 174L184 180L180 189L177 198L174 207L172 216L169 228L168 234L166 246L164 258L163 270L163 282L162 294L162 300L161 312L161 324L160 336L159 348L158 360L156 372L155 378L153 390L150 399L147 408L144 418L141 426L138 436L136 444L133 456L132 462L132 474L132 480L135 492L138 498L144 507L150 513L156 518L162 522L174 527L180 529L192 530L203 528L210 525L217 522L225 516L232 510L239 504L245 498L252 492L258 487L264 483L270 479L282 474L288 473L300 471L312 472L324 473L330 475L342 478L348 480L360 485L366 487L377 492L384 495L391 498L402 503L408 506L416 510L426 514L432 517L444 522L450 525L459 528L468 531L476 534L486 537L497 540L504 542L516 544L528 545L540 546L546 546L552 546L564 545L576 542L583 540L594 536L600 533L608 528L617 522L624 517L630 512L636 506L642 500L648 494L654 487L660 480L666 474L671 468L677 462L683 456L689 450L696 444L702 440L708 437L720 433L726 431L738 431L744 432L756 436L762 438L773 444L780 448L786 452L792 456L800 462L807 468L814 474L821 480L826 486L831 492L836 498L840 505L844 516L845 528L843 540L840 549L836 558L833 564L828 572L822 581L817 588L813 594L808 600L803 606L797 612L791 618L785 624L777 630L769 636L762 641L756 645L750 648L739 654L732 657L726 660L714 666L708 668L700 672L690 676L684 679L675 684L666 689L660 692L654 696L645 702L637 708L630 713L624 719L618 724L612 730L606 736L600 742L594 749L588 756L583 762L579 768L574 774L570 780L564 790L559 798L556 804L552 811L547 822L544 828L540 840L538 846L535 858L534 864L532 876L531 888"/><path d="M938 0L939 12L940 24L941 36L942 42L944 54L946 66L948 78L949 84L951 96L952 108L954 120L954 126L955 138L955 150L955 162L954 174L954 180L952 192L948 203L945 210L942 216L936 223L930 228L920 234L912 237L903 240L894 242L882 244L870 245L862 246L852 247L840 248L828 249L816 250L804 251L793 252L786 253L774 254L762 256L750 257L740 258L732 259L720 260L708 260L696 260L684 260L672 259L661 258L654 257L642 255L630 254L621 252L612 250L600 248L589 246L582 245L570 242L560 240L552 238L540 235L534 234L522 230L516 228L504 223L498 221L488 216L480 211L474 207L468 203L462 198L456 192L450 186L444 179L438 172L432 163L427 156L424 150L420 143L414 132L411 126L408 119L403 108L401 102L397 90L395 84L391 72L390 66L387 54L385 42L384 30L383 24L383 12L382 0"/><path d="M1434 599L1422 599L1410 600L1398 600L1386 600L1374 600L1362 599L1350 599L1338 597L1326 595L1320 593L1308 589L1302 586L1294 582L1284 576L1278 571L1272 566L1266 561L1260 554L1254 547L1249 540L1244 534L1241 528L1236 520L1230 510L1227 504L1224 498L1218 486L1214 480L1211 474L1206 466L1200 459L1194 452L1188 447L1182 443L1172 438L1164 435L1152 433L1140 433L1128 435L1120 438L1110 442L1104 446L1097 450L1090 456L1083 462L1076 468L1071 474L1065 480L1059 486L1053 492L1047 498L1041 504L1033 510L1026 515L1020 519L1014 522L1002 526L993 528L984 528L978 528L966 525L959 522L950 516L944 510L941 504L937 492L938 480L941 468L943 462L947 450L950 444L954 433L957 426L960 420L965 408L967 402L972 391L975 384L978 376L982 366L984 360L989 348L992 342L996 333L1002 324L1006 318L1011 312L1017 306L1024 300L1032 295L1038 291L1044 288L1056 282L1062 279L1068 276L1078 270L1086 265L1092 261L1098 256L1104 252L1110 246L1117 240L1122 234L1128 227L1134 219L1140 210L1143 204L1146 198L1151 186L1153 180L1157 168L1159 162L1162 150L1164 139L1165 132L1167 120L1169 108L1170 97L1171 90L1172 78L1173 66L1174 54L1175 42L1176 30L1176 24L1176 12L1177 0"/><path d="M992 894L992 882L993 870L994 858L1000 852L1008 852L1014 854L1026 857L1032 859L1044 861L1056 861L1068 859L1074 858L1086 854L1092 852L1104 847L1110 844L1119 840L1128 836L1134 832L1142 828L1152 823L1158 820L1165 816L1176 810L1182 807L1188 803L1198 798L1206 794L1212 791L1223 786L1230 783L1236 780L1248 776L1254 774L1266 770L1277 768L1284 767L1296 766L1308 767L1318 768L1326 770L1338 773L1344 775L1355 780L1362 784L1368 787L1377 792L1386 797L1392 801L1398 805L1408 810L1416 814L1422 816L1434 819"/><path d="M145 894L145 882L144 876L141 864L138 854L133 846L126 841L120 839L108 840L102 842L94 846L86 852L79 858L74 864L70 870L66 878L63 888"/><path d="M217 0L216 12L215 18L213 30L210 41L208 48L204 57L200 66L197 72L192 83L188 90L185 96L180 107L176 114L174 120L168 132L166 138L162 147L159 156L156 164L153 174L150 184L148 192L145 204L144 210L141 222L139 234L138 242L137 252L135 264L133 276L132 286L131 294L129 306L127 318L126 325L124 336L121 348L119 354L115 366L113 372L109 384L106 390L102 400L99 408L96 414L91 426L88 432L84 442L81 450L78 460L76 468L75 480L75 492L78 504L80 510L84 519L90 528L94 534L99 540L104 546L110 552L116 558L123 564L130 570L136 576L143 582L150 588L156 593L162 599L168 604L174 610L180 616L186 622L192 628L198 634L204 640L210 645L216 649L227 654L234 655L244 654L252 652L262 648L270 644L276 641L284 636L293 630L300 625L306 620L312 615L318 610L324 604L330 599L336 594L345 588L354 583L360 580L372 576L378 575L390 573L402 573L414 573L426 574L438 575L444 576L456 578L468 580L480 581L486 582L498 584L510 586L522 588L528 588L540 589L552 590L564 590L576 590L588 589L594 588L606 584L612 582L624 576L630 573L636 568L642 563L648 558L654 552L660 546L666 540L672 533L678 527L684 521L690 516L697 510L705 504L714 499L720 497L732 495L744 498L750 500L756 505L762 511L768 522L769 528L770 540L768 550L765 558L762 565L756 574L750 582L744 588L738 594L732 598L726 603L720 607L711 612L702 617L696 620L688 624L678 629L672 632L664 636L654 642L648 646L642 650L636 655L629 660L623 666L617 672L611 678L605 684L600 690L594 696L588 703L582 710L576 718L570 725L564 732L560 738L555 744L550 750L546 756L540 764L534 773L529 780L526 786L522 792L516 804L513 810L510 818L506 828L504 836L501 846L499 858L498 866L497 876L496 888"/><path d="M905 0L906 12L906 18L907 30L909 42L911 54L912 60L915 72L917 84L918 92L919 102L921 114L921 126L921 138L920 150L918 160L915 168L912 176L906 185L900 192L894 197L888 201L882 204L870 209L864 211L852 214L840 216L834 217L822 218L810 220L798 221L786 222L780 222L768 223L756 224L744 224L732 225L720 225L708 225L696 225L684 225L672 224L660 223L654 222L642 220L630 218L619 216L612 214L600 211L594 210L582 206L576 204L564 199L558 196L550 192L540 186L534 182L528 177L522 172L516 166L510 159L504 150L501 144L497 138L492 126L490 120L487 108L486 102L484 90L482 78L481 66L480 54L480 46L480 36L480 24L479 12L479 0"/><path d="M1434 563L1422 563L1410 563L1398 562L1386 562L1374 561L1362 559L1356 558L1344 555L1333 552L1326 549L1319 546L1308 540L1302 536L1296 531L1290 525L1284 518L1278 510L1274 504L1270 498L1266 489L1262 480L1259 474L1255 462L1252 456L1248 444L1246 438L1242 429L1238 420L1234 414L1230 408L1224 400L1218 395L1212 390L1203 384L1194 380L1188 377L1176 373L1170 371L1158 368L1152 366L1140 362L1133 360L1122 355L1116 350L1111 342L1112 330L1116 319L1120 312L1123 306L1128 299L1134 290L1139 282L1144 276L1148 270L1152 263L1158 253L1162 246L1165 240L1170 231L1174 222L1176 216L1180 204L1182 198L1185 186L1188 174L1189 168L1191 156L1193 144L1194 135L1195 126L1197 114L1198 102L1199 90L1200 84L1201 72L1202 60L1204 48L1204 36L1205 24L1206 12L1206 0"/><path d="M187 894L187 882L188 870L188 858L188 846L189 834L189 822L189 810L189 798L188 786L186 774L185 768L180 760L174 755L162 753L150 755L144 757L133 762L126 765L120 768L108 774L102 778L96 781L87 786L78 791L72 795L66 799L57 804L48 809L42 812L35 816L24 821L18 823L6 826"/><path d="M156 0L156 12L155 24L154 36L152 48L150 60L149 66L147 78L144 90L143 96L140 108L138 118L136 126L133 138L132 144L129 156L127 168L125 174L123 186L120 198L119 204L117 216L115 228L114 234L112 246L110 258L108 267L106 276L104 288L102 297L100 306L97 318L95 324L91 336L89 342L84 354L82 360L78 369L73 378L70 384L66 392L60 402L56 408L52 414L48 420L42 428L36 436L30 444L24 450L18 456L12 461L6 465"/><path d="M875 0L876 12L876 18L877 30L879 42L881 54L882 62L884 72L885 84L887 96L888 108L887 120L886 132L883 144L880 150L876 157L870 164L864 170L858 174L847 180L840 183L829 186L822 188L810 190L798 192L792 193L780 194L768 195L756 196L744 196L732 197L720 197L708 197L696 196L684 195L672 194L660 192L654 191L642 188L633 186L624 183L616 180L606 176L600 173L592 168L583 162L576 156L570 150L564 144L560 138L556 132L552 124L548 114L546 108L542 96L540 84L539 78L538 66L537 54L536 42L536 30L535 18L535 6"/><path d="M1434 187L1422 188L1410 190L1404 192L1392 196L1386 198L1374 204L1368 207L1362 211L1353 216L1344 222L1338 226L1332 230L1326 234L1318 240L1310 246L1302 252L1296 256L1290 261L1284 265L1275 270L1266 274L1260 276L1248 277L1242 276L1234 270L1229 264L1225 252L1224 243L1223 234L1223 222L1223 210L1223 198L1223 186L1223 174L1223 162L1224 150L1224 144L1225 132L1226 120L1226 108L1227 96L1228 84L1229 72L1230 65L1231 54L1232 42L1233 30L1233 18L1233 6"/><path d="M1434 534L1426 534L1416 534L1404 533L1392 531L1380 529L1374 528L1362 525L1354 522L1344 517L1338 514L1332 510L1324 504L1318 498L1313 492L1308 485L1302 474L1299 468L1296 458L1294 450L1291 438L1290 426L1290 420L1290 408L1290 402L1292 390L1295 378L1297 372L1302 364L1308 356L1314 351L1320 347L1329 342L1338 339L1348 336L1356 334L1368 332L1380 330L1386 329L1398 328L1410 328L1422 327L1434 327"/><path d="M0 517L12 522L18 525L24 530L30 535L37 540L44 546L51 552L58 558L65 564L72 570L78 576L84 581L90 587L96 593L102 599L108 606L113 612L117 618L121 624L126 633L130 642L132 650L134 660L134 672L132 682L129 690L126 697L120 707L115 714L110 720L104 726L97 732L90 738L84 743L78 747L72 751L64 756L54 762L48 765L42 768L30 773L24 775L12 777L0 779"/><path d="M217 894L218 882L219 870L220 858L222 846L223 840L226 828L228 820L231 810L234 803L239 792L242 786L246 778L252 769L258 762L263 756L270 750L276 745L282 741L288 737L299 732L306 729L317 726L324 724L336 722L348 721L360 721L372 722L384 723L396 725L405 726L414 728L426 731L432 733L439 738L444 745L447 756L449 768L450 780L450 788L450 798L451 810L451 822L451 834L451 846L452 858L452 870L452 882L452 894"/><path d="M109 0L109 12L109 24L109 36L110 48L110 60L110 72L109 84L109 96L108 107L107 114L106 126L105 138L103 150L102 158L100 168L99 180L96 192L95 198L93 210L91 222L90 228L87 240L85 252L83 258L80 270L78 278L75 288L72 298L69 306L66 314L62 324L59 330L54 339L49 348L45 354L40 360L35 366L30 372L22 378L12 384L6 386"/><path d="M846 0L846 12L847 24L848 36L849 48L851 60L852 72L852 78L853 90L852 101L851 108L848 120L845 126L840 135L834 142L828 146L822 150L810 156L804 158L792 162L786 163L774 165L762 167L754 168L744 169L732 169L720 169L708 169L696 168L690 168L678 166L666 163L660 162L648 158L642 155L631 150L624 146L618 142L612 137L606 131L600 124L594 115L590 108L587 102L583 90L581 84L578 72L576 61L575 54L574 42L573 30L572 18L572 6"/><path d="M1434 141L1422 142L1410 144L1404 145L1392 148L1386 150L1374 154L1368 156L1356 161L1350 163L1338 168L1332 170L1320 173L1314 174L1302 175L1295 174L1284 170L1278 165L1272 156L1269 150L1266 141L1264 132L1262 120L1261 108L1261 96L1261 84L1261 72L1262 60L1262 48L1263 36L1263 24L1263 12L1263 0"/><path d="M1434 505L1422 504L1416 504L1404 502L1392 499L1386 497L1374 492L1368 489L1362 485L1356 480L1350 474L1344 465L1340 456L1338 450L1336 438L1336 426L1338 418L1342 408L1345 402L1350 395L1356 389L1362 384L1371 378L1380 374L1386 371L1398 368L1405 366L1416 364L1428 363"/><path d="M0 584L12 585L21 588L30 592L36 595L44 600L52 606L59 612L65 618L70 624L74 630L78 637L83 648L84 654L85 666L84 673L81 684L78 690L72 700L66 707L60 713L54 718L48 722L42 726L30 732L24 734L12 737L6 738"/><path d="M248 894L248 882L250 870L252 860L254 852L258 842L262 834L265 828L270 820L276 812L282 806L288 801L294 797L305 792L312 790L324 788L336 789L348 792L354 795L360 798L368 804L375 810L380 816L384 822L390 832L394 840L396 846L399 858L402 870L403 876L404 888"/><path d="M65 0L65 12L66 22L67 30L69 42L71 54L72 63L73 72L75 84L76 96L77 108L77 120L77 132L76 144L75 156L74 168L72 180L71 186L69 198L66 210L65 216L62 228L60 234L56 246L54 253L50 264L47 270L42 281L38 288L34 294L30 300L24 307L18 312L8 318L0 320"/><path d="M816 0L816 12L817 24L817 36L817 48L817 60L816 72L816 78L813 90L810 99L805 108L800 114L794 120L786 125L780 128L771 132L762 135L750 138L744 139L732 140L720 140L708 140L696 139L690 138L678 135L670 132L660 128L654 124L647 120L640 114L634 108L629 102L624 95L618 84L615 78L612 68L610 60L607 48L606 39L605 30L604 18L604 6"/><path d="M1434 87L1422 87L1410 89L1402 90L1392 92L1380 95L1374 96L1362 98L1350 99L1338 99L1330 96L1321 90L1317 84L1313 78L1309 66L1308 60L1306 48L1305 36L1304 24L1303 12L1303 0"/></svg>
+    </div>
     <div class="wrap">
-      <span class="eyebrow">EW &middot; C-UAS &middot; Training &amp; Advisory</span>
-      <h1>Combat Forged Operational Superiority</h1>
-      <span class="eyebrow hero-divisions">Two Divisions, One Mission</span>
-      <p class="hero-sub">Omira develops counter-EW command and control, next-generation C-UAS sensing, and combat-informed training and advisory, built on direct experience from the battlefields of Ukraine.</p>
+      <div class="mark">
+        <h1>OMIRA</h1>
+        <span class="eyebrow hero-kicker">UAS Warfare Technology &amp; Advisory</span>
+      </div>
+      <p class="hero-verdict">We fought the drone war.<br>Now we build for it.</p>
+      <p class="hero-sub">Omira develops counter-EW command and control, layered C-UAS sensing, and combat-informed training and advisory, built on direct experience from the battlefields of Ukraine.</p>
 
       <div class="spectrum-wrap" aria-hidden="true">
         <div class="spectrum-label">
-          <span class="live">&#9679; LINKS HELD</span>
-          <span>CONTESTED SPECTRUM</span>
+          <span class="live">&#9679; Links held</span>
+          <span>Contested spectrum</span>
         </div>
         <canvas id="spectrum" height="190"></canvas>
         <div class="spectrum-note">Designed for denied environments</div>
@@ -321,6 +383,7 @@ footer{padding:44px 0 56px}
 
   <!-- ABOUT / ORIGIN -->
   <section class="section" id="about">
+    <div class="bg-art" aria-hidden="true" style="-webkit-mask-image:radial-gradient(ellipse 120% 120% at 50% 48%,#000 55%,transparent 97%);mask-image:radial-gradient(ellipse 120% 120% at 50% 48%,#000 55%,transparent 97%)"><svg viewBox="0 0 1440 740" preserveAspectRatio="xMidYMid slice"><path d="M-20 225L340 196L820 185L1460 235"/><path d="M340 190L346 196L340 202L334 196Z"/><path d="M820 179L826 185L820 191L814 185Z"/><path stroke-dasharray="10 8" d="M-20 505L430 470L950 495L1460 420"/><path d="M430 464L436 470L430 476L424 470Z"/><path d="M950 489L956 495L950 501L944 495Z"/><g transform="translate(430 540) scale(0.85)"><path d="M0 0L14 -36L20 -110L16 -210L22 -300L34 -392L0 -344L-34 -392L-22 -300L-16 -210L-20 -110L-14 -36Z"/><path d="M0 -36L20 -110L0 -210L22 -300"/><path d="M0 -36L-20 -110L0 -210L-22 -300"/><line x1="0" y1="-210" x2="0" y2="-344"/><path d="M0 -20L7 -30L0 -40L-7 -30Z"/><path d="M19 -122L128 -196L212 -372L150 -300L162 -326L100 -244L110 -266L21 -152Z"/><line x1="26" y1="-136" x2="200" y2="-360"/><path d="M-19 -122L-128 -196L-212 -372L-150 -300L-162 -326L-100 -244L-110 -266L-21 -152Z"/><line x1="-26" y1="-136" x2="-200" y2="-360"/></g><g transform="translate(1085 460) scale(0.56) rotate(-28)"><path d="M0 0L14 -36L20 -110L16 -210L22 -300L34 -392L0 -344L-34 -392L-22 -300L-16 -210L-20 -110L-14 -36Z"/><path d="M0 -36L20 -110L0 -210L22 -300"/><path d="M0 -36L-20 -110L0 -210L-22 -300"/><line x1="0" y1="-210" x2="0" y2="-344"/><path d="M0 -20L7 -30L0 -40L-7 -30Z"/><path d="M19 -122L128 -196L212 -372L150 -300L162 -326L100 -244L110 -266L21 -152Z"/><line x1="26" y1="-136" x2="200" y2="-360"/><path d="M-19 -122L-128 -196L-212 -372L-150 -300L-162 -326L-100 -244L-110 -266L-21 -152Z"/><line x1="-26" y1="-136" x2="-200" y2="-360"/></g></svg></div>
     <div class="wrap origin">
       <div class="origin-name reveal">
         <b>OMIRA</b><br>
@@ -338,21 +401,22 @@ footer{padding:44px 0 56px}
 
   <!-- OMIRA SYSTEMS -->
   <section class="section" id="systems">
+    <div class="bg-art" aria-hidden="true" style="-webkit-mask-image:radial-gradient(ellipse 90% 95% at 62% 38%,#000 30%,transparent 86%);mask-image:radial-gradient(ellipse 90% 95% at 62% 38%,#000 30%,transparent 86%)"><svg viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice"><path d="M1128 456L1143 456L1161 456L1167 456L1185 456L1191 456L1209 456L1215 456L1233 456L1239 456L1257 456L1263 456L1272 465L1272 471L1272 489L1272 495L1272 513L1272 519L1272 537L1272 543L1272 561L1272 567L1272 585L1272 591L1263 600L1257 600L1239 600L1233 600L1215 600L1209 600L1191 600L1185 600L1167 600L1161 600L1152 591L1152 585L1152 567L1152 561L1152 543L1152 537L1152 519L1152 513L1152 495L1152 480"/><circle class="f" cx="1128" cy="456" r="3"/><circle cx="1152" cy="480" r="4.5"/><path d="M1368 168L1368 153L1368 135L1368 129L1368 111L1368 105L1359 96L1353 96L1335 96L1329 96L1311 96L1305 96L1296 87L1296 81L1296 63L1296 57L1296 39L1296 33L1287 24L1281 24L1263 24L1257 24L1239 24L1233 24L1215 24L1200 24"/><circle class="f" cx="1368" cy="168" r="3"/><circle cx="1200" cy="24" r="4.5"/><path d="M432 576L432 591L432 609L432 615L432 633L432 639L441 648L447 648L465 648L471 648L489 648L495 648L513 648L519 648L537 648L543 648L561 648L567 648L585 648L591 648L609 648L615 648L624 657L624 672"/><circle class="f" cx="432" cy="576" r="3"/><circle cx="624" cy="672" r="4.5"/><path d="M456 240L471 240L489 240L495 240L513 240L519 240L528 249L528 255L528 273L528 279L528 297L528 303L528 321L528 327L528 345L528 351L528 369L528 375L519 384L513 384L495 384L489 384L471 384L465 384L456 393L456 399L456 417L456 423L456 441L456 447L456 465L456 471L456 489L456 495L456 513L456 519L456 537L456 543L456 561L456 576"/><circle class="f" cx="456" cy="240" r="3"/><circle cx="456" cy="576" r="4.5"/><path d="M240 264L240 279L240 297L240 303L240 321L240 327L249 336L255 336L273 336L279 336L297 336L303 336L321 336L327 336L345 336L351 336L369 336L375 336L393 336L408 336"/><circle class="f" cx="240" cy="264" r="3"/><circle cx="408" cy="336" r="4.5"/><path d="M288 264L288 249L288 231L288 225L288 207L288 201L279 192L273 192L255 192L249 192L231 192L225 192L207 192L201 192L192 183L192 177L192 159L192 153L192 135L192 129L192 111L192 105L192 87L192 81L192 63L192 57L192 39L192 33L201 24L207 24L225 24L231 24L249 24L264 24"/><circle class="f" cx="288" cy="264" r="3"/><circle cx="264" cy="24" r="4.5"/><path d="M360 408L360 423L360 441L360 447L360 465L360 471L360 489L360 495L360 513L360 519L369 528L375 528L393 528L399 528L417 528L432 528"/><circle class="f" cx="360" cy="408" r="3"/><circle cx="432" cy="528" r="4.5"/><path d="M1368 456L1368 471L1368 489L1368 495L1368 513L1368 519L1368 537L1368 543L1368 561L1368 567L1368 585L1368 591L1368 609L1368 615L1368 633L1368 639L1377 648L1383 648L1401 648L1407 648L1416 657L1416 672"/><circle class="f" cx="1368" cy="456" r="3"/><circle cx="1416" cy="672" r="4.5"/><path d="M888 264L873 264L855 264L849 264L831 264L825 264L807 264L801 264L783 264L777 264L759 264L753 264L735 264L729 264L711 264L705 264L696 255L696 249L696 231L696 225L696 207L696 201L696 183L696 177L696 159L696 153L696 135L696 129L687 120L681 120L663 120L657 120L639 120L633 120L615 120L609 120L591 120L585 120L567 120L561 120L543 120L528 120"/><circle class="f" cx="888" cy="264" r="3"/><circle cx="528" cy="120" r="4.5"/><path d="M816 408L831 408L849 408L855 408L873 408L879 408L897 408L903 408L912 417L912 423L912 441L912 447L912 465L912 471L912 489L912 495L912 513L912 519L912 537L912 543L912 561L912 567L912 585L912 600"/><circle class="f" cx="816" cy="408" r="3"/><circle cx="912" cy="600" r="4.5"/><path d="M1200 336L1215 336L1233 336L1239 336L1257 336L1263 336L1281 336L1287 336L1305 336L1311 336L1329 336L1335 336L1353 336L1359 336L1368 327L1368 321L1368 303L1368 297L1368 279L1368 273L1368 255L1368 249L1368 231L1368 225L1368 207L1368 201L1368 183L1368 168"/><circle class="f" cx="1200" cy="336" r="3"/><circle cx="1368" cy="168" r="4.5"/><path d="M744 336L729 336L711 336L705 336L687 336L681 336L672 345L672 351L672 369L672 375L672 393L672 399L672 417L672 423L672 441L672 447L672 465L672 471L681 480L687 480L705 480L711 480L729 480L735 480L753 480L759 480L777 480L783 480L801 480L807 480L825 480L840 480"/><circle class="f" cx="744" cy="336" r="3"/><circle cx="840" cy="480" r="4.5"/><path d="M888 120L873 120L855 120L849 120L831 120L825 120L807 120L801 120L792 111L792 105L792 87L792 81L792 63L792 57L792 39L792 33L783 24L777 24L759 24L753 24L735 24L729 24L720 33L720 39L720 57L720 63L720 81L720 87L720 105L720 111L720 129L720 135L720 153L720 168"/><circle class="f" cx="888" cy="120" r="3"/><circle cx="720" cy="168" r="4.5"/><path d="M96 480L96 465L96 447L96 441L96 423L96 417L96 399L96 393L96 375L96 369L96 351L96 345L96 327L96 321L96 303L96 297L105 288L111 288L129 288L135 288L153 288L159 288L177 288L183 288L201 288L216 288"/><circle class="f" cx="96" cy="480" r="3"/><circle cx="216" cy="288" r="4.5"/><path d="M360 288L345 288L327 288L321 288L303 288L297 288L279 288L273 288L264 297L264 303L273 312L279 312L297 312L303 312L321 312L327 312L345 312L351 312L369 312L375 312L393 312L399 312L417 312L423 312L432 303L432 297L432 279L432 273L432 255L432 249L432 231L432 225L432 207L432 201L432 183L432 177L432 159L432 144"/><circle class="f" cx="360" cy="288" r="3"/><circle cx="432" cy="144" r="4.5"/><path d="M984 216L969 216L951 216L945 216L927 216L921 216L912 225L912 231L912 249L912 255L912 273L912 279L912 297L912 303L912 321L912 327L912 345L912 351L912 369L912 375L903 384L897 384L879 384L873 384L855 384L849 384L831 384L825 384L807 384L792 384"/><circle class="f" cx="984" cy="216" r="3"/><circle cx="792" cy="384" r="4.5"/><path d="M1320 552L1335 552L1344 543L1344 537L1344 519L1344 513L1344 495L1344 489L1344 471L1344 465L1344 447L1344 441L1344 423L1344 417L1344 399L1344 393L1335 384L1329 384L1311 384L1305 384L1287 384L1281 384L1263 384L1257 384L1239 384L1233 384L1215 384L1209 384L1191 384L1185 384L1167 384L1152 384"/><circle class="f" cx="1320" cy="552" r="3"/><circle cx="1152" cy="384" r="4.5"/><path d="M528 96L513 96L495 96L489 96L471 96L465 96L447 96L441 96L423 96L417 96L408 105L408 111L408 129L408 135L408 153L408 159L408 177L408 183L408 201L408 207L408 225L408 231L408 249L408 255L408 273L408 288"/><circle class="f" cx="528" cy="96" r="3"/><circle cx="408" cy="288" r="4.5"/><path d="M1296 504L1296 519L1296 537L1296 543L1296 561L1296 567L1296 585L1296 591L1296 609L1296 624"/><circle class="f" cx="1296" cy="504" r="3"/><circle cx="1296" cy="624" r="4.5"/><path d="M960 600L960 585L960 567L960 561L960 543L960 537L960 519L960 513L960 495L960 489L960 471L960 465L960 447L960 441L960 423L960 417L951 408L936 408"/><circle class="f" cx="960" cy="600" r="3"/><circle cx="936" cy="408" r="4.5"/><path d="M360 360L345 360L327 360L321 360L303 360L297 360L288 369L288 375L288 393L288 399L288 417L288 423L297 432L303 432L321 432L327 432L336 423L336 417L336 399L336 384"/><circle class="f" cx="360" cy="360" r="3"/><circle cx="336" cy="384" r="4.5"/><path d="M72 480L72 465L72 447L72 441L72 423L72 417L72 399L72 393L63 384L57 384L39 384L33 384L24 393L24 399L24 417L24 423L24 441L24 447L24 465L24 480"/><circle class="f" cx="72" cy="480" r="3"/><circle cx="24" cy="480" r="4.5"/><path d="M600 504L615 504L633 504L639 504L657 504L663 504L681 504L687 504L705 504L720 504"/><circle class="f" cx="600" cy="504" r="3"/><circle cx="720" cy="504" r="4.5"/><rect x="260" y="140" width="110" height="72"/><line x1="282" y1="140" x2="282" y2="131"/><line x1="282" y1="212" x2="282" y2="221"/><line x1="304" y1="140" x2="304" y2="131"/><line x1="304" y1="212" x2="304" y2="221"/><line x1="326" y1="140" x2="326" y2="131"/><line x1="326" y1="212" x2="326" y2="221"/><line x1="348" y1="140" x2="348" y2="131"/><line x1="348" y1="212" x2="348" y2="221"/><rect x="880" y="420" width="132" height="84"/><line x1="906" y1="420" x2="906" y2="411"/><line x1="906" y1="504" x2="906" y2="513"/><line x1="933" y1="420" x2="933" y2="411"/><line x1="933" y1="504" x2="933" y2="513"/><line x1="959" y1="420" x2="959" y2="411"/><line x1="959" y1="504" x2="959" y2="513"/><line x1="986" y1="420" x2="986" y2="411"/><line x1="986" y1="504" x2="986" y2="513"/><rect x="1240" y="120" width="96" height="96"/><line x1="1259" y1="120" x2="1259" y2="111"/><line x1="1259" y1="216" x2="1259" y2="225"/><line x1="1278" y1="120" x2="1278" y2="111"/><line x1="1278" y1="216" x2="1278" y2="225"/><line x1="1298" y1="120" x2="1298" y2="111"/><line x1="1298" y1="216" x2="1298" y2="225"/><line x1="1317" y1="120" x2="1317" y2="111"/><line x1="1317" y1="216" x2="1317" y2="225"/></svg></div>
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">01 &middot; Omira Systems &middot; Development</span>
+        <span class="eyebrow eyebrow-lg">01 / Omira Systems / Development</span>
         <h2>The battlefield wrote the requirements</h2>
-        <p>We develop next-generation EW and C-UAS sensing systems informed by extensive combat experience in Ukraine and a deep understanding of the operational realities and emerging challenges of the modern battlefield. Every capability answers a problem our team met in combat, not one imagined in a lab.</p>
+        <p>We develop EW and C-UAS sensing systems informed by extensive combat experience in Ukraine and a deep understanding of the operational realities and emerging challenges of the modern battlefield. Every capability answers a problem our team met in combat, not one imagined in a lab.</p>
       </div>
       <div class="pillars cols-2">
         <div class="pillar reveal">
           <span class="designator">SENSE</span>
-          <h3>Next-Gen C-UAS Detection and Tracking</h3>
+          <h3>C-UAS detection and tracking</h3>
           <p>Layered sensing built for low, slow, and small threats in cluttered, contested airspace, engineered around how modern drone attacks actually unfold and the limitations of current technologies we observed on the battlefield.</p>
         </div>
         <div class="pillar reveal">
           <span class="designator">CONNECT</span>
-          <h3>Counter-EW Command and Control</h3>
+          <h3>Counter-EW command and control</h3>
           <p>In Ukraine, electronic warfare is terrain, and units maneuver through it the way they maneuver through ground. We build communications and C2 designed to hold the link inside that terrain, against modern jamming, at combat tempo. Our radios adapt dynamically, intelligently, and in real time to the conditions around them.</p>
         </div>
       </div>
@@ -361,31 +425,32 @@ footer{padding:44px 0 56px}
 
   <!-- OMIRA VANGUARD -->
   <section class="section" id="advisory">
+    <div class="bg-art loud" aria-hidden="true" style="-webkit-mask-image:radial-gradient(ellipse 125% 135% at 55% 22%,#000 55%,transparent 96%);mask-image:radial-gradient(ellipse 125% 135% at 55% 22%,#000 55%,transparent 96%)"><svg viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice"><path stroke-dasharray="12 9" d="M-20 96L20 97L60 97L100 96L140 93L180 90L220 87L260 84L300 81L340 79L380 77L420 77L460 76L500 77L540 77L580 77L620 77L660 76L700 74L740 71L780 68L820 63L860 58L900 53L940 48L980 44L1020 41L1060 39L1100 38L1140 39L1180 42L1220 46L1260 50L1300 56L1340 62L1380 67L1420 72L1460 76"/><path stroke-dasharray="12 9" d="M-20 298L20 297L60 297L100 297L140 297L180 297L220 296L260 296L300 294L340 291L380 288L420 284L460 279L500 275L540 271L580 267L620 265L660 264L700 265L740 267L780 270L820 275L860 280L900 286L940 292L980 298L1020 303L1060 307L1100 310L1140 312L1180 312L1220 312L1260 311L1300 310L1340 309L1380 307L1420 307L1460 307"/><rect x="760" y="120" width="44" height="28"/><line x1="760" y1="120" x2="804" y2="148"/><line x1="804" y1="120" x2="760" y2="148"/><rect x="930" y="215" width="44" height="28"/><line x1="930" y1="215" x2="974" y2="243"/><line x1="974" y1="215" x2="930" y2="243"/><rect x="1120" y="85" width="44" height="28"/><line x1="1120" y1="85" x2="1164" y2="113"/><line x1="1164" y1="85" x2="1120" y2="113"/><rect x="1275" y="195" width="44" height="28"/><line x1="1275" y1="195" x2="1319" y2="223"/><line x1="1319" y1="195" x2="1275" y2="223"/><rect x="850" y="45" width="44" height="28"/><line x1="850" y1="45" x2="894" y2="73"/><line x1="894" y1="45" x2="850" y2="73"/><path d="M730 165Q950 105 1170 140"/><path d="M1156 144L1170 140L1158 131"/><path d="M790 240Q1010 275 1230 225"/><path d="M1218 234L1230 225L1215 222"/><ellipse stroke-dasharray="10 8" cx="1345" cy="150" rx="72" ry="46"/></svg></div>
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">02 &middot; Omira Vanguard &middot; Advisory</span>
+        <span class="eyebrow eyebrow-lg">02 / Omira Vanguard / Advisory</span>
         <h2>The formation is the weapon</h2>
         <p>The visible lesson from Ukraine is that cheap drones destroy expensive vehicles. The deeper lesson is that the drone itself decides very little. What decides the fight is the formation built around it, the decision architecture that keeps its kill chain alive, and the speed at which the force adapts. That is what Omira Vanguard builds in a partner force.</p>
       </div>
       <div class="pillars cols-4">
         <div class="pillar reveal">
           <span class="designator">TRAIN</span>
-          <h3>Drone Warfare Training</h3>
+          <h3>Drone warfare training</h3>
           <p>Operator-to-commander instruction derived from frontline service, for the fight as it is today.</p>
         </div>
         <div class="pillar reveal">
           <span class="designator">DOCTRINE</span>
-          <h3>Doctrine Development</h3>
+          <h3>Doctrine development</h3>
           <p>Formation design and decision architecture for forces that must fight through the spectrum and under drone-saturated skies.</p>
         </div>
         <div class="pillar reveal">
           <span class="designator">RED TEAM</span>
-          <h3>Red Teaming</h3>
+          <h3>Red teaming</h3>
           <p>A combat-experienced drone opposition force that shows what battlefield reality really looks like before it has to be learned under fire.</p>
         </div>
         <div class="pillar reveal">
           <span class="designator">ADVISE</span>
-          <h3>Operational Advisory</h3>
+          <h3>Operational advisory</h3>
           <p>Capability development and technology transfer support from the people who have shaped the current drone war and its technologies.</p>
         </div>
       </div>
@@ -394,6 +459,7 @@ footer{padding:44px 0 56px}
 
   <!-- PROVENANCE -->
   <section class="section">
+    <div class="bg-art" aria-hidden="true" style="-webkit-mask-image:radial-gradient(ellipse 125% 125% at 55% 45%,#000 55%,transparent 97%);mask-image:radial-gradient(ellipse 125% 125% at 55% 45%,#000 55%,transparent 97%)"><svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"><circle cx="1040" cy="400" r="48"/><circle cx="1040" cy="400" r="130"/><circle cx="1040" cy="400" r="230"/><circle cx="1040" cy="400" r="330"/><line x1="620" y1="400" x2="1450" y2="400"/><line x1="1040" y1="20" x2="1040" y2="790"/><path d="M-20 150C340 140 740 190 1040 400"/><line x1="56" y1="155" x2="56" y2="143"/><line x1="161" y1="156" x2="162" y2="144"/><line x1="267" y1="162" x2="268" y2="150"/><line x1="373" y1="173" x2="375" y2="161"/><line x1="479" y1="188" x2="481" y2="177"/><line x1="583" y1="210" x2="586" y2="198"/><line x1="685" y1="238" x2="689" y2="226"/><line x1="785" y1="272" x2="789" y2="261"/><line x1="881" y1="314" x2="886" y2="303"/><line x1="972" y1="363" x2="979" y2="353"/><circle class="f" cx="1040" cy="400" r="4"/></svg></div>
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">Why Omira</span>
@@ -401,19 +467,19 @@ footer{padding:44px 0 56px}
       </div>
       <div class="prov-list">
         <div class="prov-item reveal">
-          <span class="k">Combat-Derived</span>
+          <span class="k">Combat-derived</span>
           <span class="v"><b>Every requirement traces to the front line.</b> Our systems and curricula are shaped by direct experience operating drones and fighting electronic warfare under fire, not by assumptions about it.</span>
         </div>
         <div class="prov-item reveal">
-          <span class="k">Operationally Current</span>
+          <span class="k">Operationally current</span>
           <span class="v"><b>The threat evolves constantly. So do we.</b> Continuous contact with the operational environment keeps our understanding of drone warfare and the electromagnetic fight current, not archival.</span>
         </div>
         <div class="prov-item reveal">
-          <span class="k">End-to-End</span>
+          <span class="k">End-to-end</span>
           <span class="v"><b>From capability to competence.</b> Development, doctrine, training, and advisory under one roof, so technology arrives with the knowledge required to employ it.</span>
         </div>
         <div class="prov-item reveal">
-          <span class="k">In the Room</span>
+          <span class="k">In the room</span>
           <span class="v"><b>Pressure-tested where the debate happens.</b> Our perspective is presented on stage at the National Guard Association of the United States, the International Stability Operations Association, and the Association of Old Crows, and in briefings with U.S. general officers, U.S. Congressmen, and allied defense leaders.</span>
         </div>
       </div>
@@ -428,7 +494,7 @@ footer{padding:44px 0 56px}
         <h2>Talk to the people who fought the problem</h2>
         <p>For defense organizations, allied governments, and partners: reach out to discuss capabilities, training, or collaboration.</p>
         <div class="contact-lines">
-          <span>General Inquiries</span>
+          <span>General inquiries</span>
           <a href="mailto:info@omirasystems.com">info@omirasystems.com</a>
           <span>Washington DC</span>
         </div>
@@ -441,7 +507,7 @@ footer{padding:44px 0 56px}
 <footer>
   <div class="wrap foot">
     <span>&copy; <span id="yr"></span> Colibri Defense Dynamics Inc, DBA Omira Systems. Washington DC. All rights reserved.</span>
-    <span class="fmono">Omira Systems &middot; Omira Vanguard</span>
+    <span class="fmono">Omira Systems / Omira Vanguard</span>
   </div>
 </footer>
 
@@ -459,7 +525,8 @@ if (!reduce && 'IntersectionObserver' in window) {
   document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
 }
 
-/* Spectrum signature: a live spectrum trace with a protected notch that holds */
+/* Spectrum figure: hostile noise floor in grey, the held links in amber.
+   Amber marks the answer; every other series stays grey. */
 (function () {
   const canvas = document.getElementById('spectrum');
   if (!canvas) return;
@@ -495,7 +562,7 @@ if (!reduce && 'IntersectionObserver' in window) {
     ctx.clearRect(0, 0, w, h);
     const base = h * 0.78;
 
-    /* hostile noise floor */
+    /* hostile noise floor: steel grey */
     ctx.beginPath();
     for (let i = 0; i < N; i++) {
       const x = (i / (N - 1)) * w;
@@ -517,33 +584,33 @@ if (!reduce && 'IntersectionObserver' in window) {
       const y = base - noise[i];
       i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
     }
-    ctx.strokeStyle = 'rgba(147,161,184,0.55)';
+    ctx.strokeStyle = 'rgba(162,172,188,0.5)';
     ctx.lineWidth = 1;
     ctx.stroke();
 
     /* fill under noise */
     ctx.lineTo(w, base); ctx.lineTo(0, base); ctx.closePath();
-    ctx.fillStyle = 'rgba(147,161,184,0.06)';
+    ctx.fillStyle = 'rgba(162,172,188,0.06)';
     ctx.fill();
 
-    /* the links: steady carriers inside their notches */
+    /* the links: steady carriers inside their notches, amber */
     for (const L of links) {
       const lx = L.cx * w;
       const pulse = 0.75 + 0.25 * Math.sin(t * 4 + L.ph);
       const lh = h * L.lh;
       const grad = ctx.createLinearGradient(0, base - lh, 0, base);
-      grad.addColorStop(0, 'rgba(61,123,255,' + (0.95 * pulse) + ')');
-      grad.addColorStop(1, 'rgba(61,123,255,0.15)');
+      grad.addColorStop(0, 'rgba(255,176,0,' + (0.95 * pulse) + ')');
+      grad.addColorStop(1, 'rgba(255,176,0,0.15)');
       ctx.fillStyle = grad;
       ctx.fillRect(lx - 1.5, base - lh, 3, lh);
       ctx.beginPath();
       ctx.arc(lx, base - lh, 3.2, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(61,123,255,' + pulse + ')';
+      ctx.fillStyle = 'rgba(255,176,0,' + pulse + ')';
       ctx.fill();
     }
 
     /* baseline */
-    ctx.fillStyle = 'rgba(148,170,205,0.25)';
+    ctx.fillStyle = 'rgba(162,172,188,0.25)';
     ctx.fillRect(0, base, w, 1);
 
     if (!reduce) requestAnimationFrame(frame);
