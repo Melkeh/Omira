@@ -91,7 +91,7 @@ h1,h2,h3{text-wrap:balance;color:var(--lume)}
 }
 .section{padding:96px 0;border-top:1px solid var(--line)}
 .section-head{max-width:680px;margin-bottom:56px}
-.section-head .eyebrow-lg{font-size:clamp(15px,1.7vw,20px)}
+.eyebrow-lg{font-size:clamp(15px,1.7vw,20px)}
 .section-head h2{
   font-family:var(--display);
   font-size:clamp(26px,3.5vw,32px);
@@ -217,7 +217,7 @@ body::after{
 }
 .hero-problem + .hero-verdict{margin-top:16px}
 .proof-strip{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
   background:var(--line);
   border:1px solid var(--line);
   border-radius:2px;overflow:hidden;
@@ -228,15 +228,19 @@ body::after{
   padding:28px 32px;
 }
 .proof-cell b{
-  display:block;
+  display:flex;align-items:center;gap:12px;
   font-family:var(--mono);
   font-size:clamp(22px,2.6vw,30px);
   font-weight:500;
   color:var(--lume);
 }
-.proof-cell b .live{color:var(--amber);animation:pulse-dot 1.8s ease-in-out infinite}
+.live-dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--amber);flex:none;
+  animation:pulse-dot 1.8s ease-in-out infinite;
+}
 @keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.25}}
-@media (prefers-reduced-motion:reduce){.proof-cell b .live{animation:none}}
+@media (prefers-reduced-motion:reduce){.live-dot{animation:none}}
 .proof-cell span{
   display:block;margin-top:8px;
   font-family:var(--mono);font-size:11px;letter-spacing:.12em;
@@ -315,10 +319,31 @@ canvas#spectrum{display:block;width:100%;height:190px}
   padding-left:24px;
 }
 .origin-name b{color:var(--lume);font-weight:500}
+.origin-body{max-width:72ch}
 .origin-body p{color:var(--haze);font-size:15px}
 .origin-body p+p{margin-top:16px}
 .origin-body .lede{color:var(--lume);font-size:20px;font-weight:500;line-height:1.5}
+.section-head.origin-strip-head{margin-bottom:32px}
+.origin-bridge{
+  margin-top:20px;
+  color:var(--lume);
+  font-size:17px;font-weight:500;line-height:1.6;
+}
+.pillars.origin-pillars{grid-template-columns:2fr 1fr}
+@media (max-width:860px){.pillars.origin-pillars{grid-template-columns:1fr}}
 @media (max-width:860px){.origin{grid-template-columns:1fr;gap:40px}}
+
+/* ---------- colophon ---------- */
+.section.colophon-sec{padding:44px 0 12px}
+.colophon{
+  font-family:var(--mono);
+  color:var(--steel);
+  font-size:13px;letter-spacing:.03em;
+  line-height:1.9;
+  border-left:2px solid var(--amber);
+  padding-left:24px;
+}
+.colophon b{color:var(--lume);font-weight:500}
 
 /* ---------- provenance ---------- */
 .prov-list{border-top:none}
@@ -362,10 +387,11 @@ canvas#spectrum{display:block;width:100%;height:190px}
   width:fit-content;padding-bottom:2px;
 }
 .contact-lines a:hover{color:var(--amber)}
+.contact-lines a + span{margin-top:10px}
 @media (max-width:600px){.contact{padding:48px 24px}.contact-lines a{font-size:16px}}
 
 /* ---------- footer ---------- */
-footer{padding:48px 0 56px}
+footer{padding:28px 0 56px}
 .foot{
   display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
   color:var(--steel);font-size:13px;
@@ -434,33 +460,37 @@ footer{padding:48px 0 56px}
   <section class="section" id="about">
     <div class="bg-art" aria-hidden="true" style="-webkit-mask-image:radial-gradient(ellipse 120% 120% at 50% 48%,#000 55%,transparent 97%);mask-image:radial-gradient(ellipse 120% 120% at 50% 48%,#000 55%,transparent 97%)"><svg viewBox="0 0 1440 740" preserveAspectRatio="xMidYMid slice"><path d="M-20 225L340 196L820 185L1460 235"/><path d="M340 190L346 196L340 202L334 196Z"/><path d="M820 179L826 185L820 191L814 185Z"/><path stroke-dasharray="10 8" d="M-20 505L430 470L950 495L1460 420"/><path d="M430 464L436 470L430 476L424 470Z"/><path d="M950 489L956 495L950 501L944 495Z"/><g transform="translate(430 540) scale(0.85)"><path d="M0 0L14 -36L20 -110L16 -210L22 -300L34 -392L0 -344L-34 -392L-22 -300L-16 -210L-20 -110L-14 -36Z"/><path d="M0 -36L20 -110L0 -210L22 -300"/><path d="M0 -36L-20 -110L0 -210L-22 -300"/><line x1="0" y1="-210" x2="0" y2="-344"/><path d="M0 -20L7 -30L0 -40L-7 -30Z"/><path d="M19 -122L128 -196L212 -372L150 -300L162 -326L100 -244L110 -266L21 -152Z"/><line x1="26" y1="-136" x2="200" y2="-360"/><path d="M-19 -122L-128 -196L-212 -372L-150 -300L-162 -326L-100 -244L-110 -266L-21 -152Z"/><line x1="-26" y1="-136" x2="-200" y2="-360"/></g><g transform="translate(1085 460) scale(0.56) rotate(-28)"><path d="M0 0L14 -36L20 -110L16 -210L22 -300L34 -392L0 -344L-34 -392L-22 -300L-16 -210L-20 -110L-14 -36Z"/><path d="M0 -36L20 -110L0 -210L22 -300"/><path d="M0 -36L-20 -110L0 -210L-22 -300"/><line x1="0" y1="-210" x2="0" y2="-344"/><path d="M0 -20L7 -30L0 -40L-7 -30Z"/><path d="M19 -122L128 -196L212 -372L150 -300L162 -326L100 -244L110 -266L21 -152Z"/><line x1="26" y1="-136" x2="200" y2="-360"/><path d="M-19 -122L-128 -196L-212 -372L-150 -300L-162 -326L-100 -244L-110 -266L-21 -152Z"/><line x1="-26" y1="-136" x2="-200" y2="-360"/></g></svg></div>
     <div class="wrap">
+      <div class="section-head origin-strip-head reveal">
+        <span class="eyebrow eyebrow-lg">00 / Omira / Origin</span>
+      </div>
       <div class="proof-strip reveal">
         <div class="proof-cell">
           <b>40+</b>
           <span>Combined years of frontline service in the Russo&ndash;Ukrainian War</span>
         </div>
         <div class="proof-cell">
-          <b>100+</b>
-          <span>Years across the U.S. military, the Pentagon, and the defense industry</span>
-        </div>
-        <div class="proof-cell">
-          <b><span class="live">&#9679;</span> Live</b>
+          <b><span class="live-dot"></span>Live</b>
           <span>Operational cadre on the front line in Ukraine today</span>
         </div>
       </div>
     </div>
-    <div class="wrap origin">
-      <div class="origin-name reveal">
-        <b>OMIRA</b><br>
-        from <b>M&iacute;mir</b>, the Norse embodiment of wisdom<br>
-        and knowledge earned through sacrifice,<br>
-        and <b>orrusta</b>, the Old Norse word for war.
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Omira began on the front line</h2>
+        <p>Omira's founder went to Ukraine, served inside the drone war, and built Omira on a different conviction: more than another piece of hardware, allied militaries need the lessons that were already paid for at the front, delivered before their people have to pay for them again.</p>
+        <p class="origin-bridge">We know the battlefield, and we know the institutions that must now adapt to it.</p>
       </div>
-      <div class="origin-body reveal">
-        <p class="lede">Omira began on the front line.</p>
-        <p>Omira's founder went to Ukraine and served inside the drone war. Omira was built on a different conviction: more than another piece of hardware, allied militaries need the lessons that were already paid for at the front, delivered before their people have to pay for them again.</p>
-        <p>He did not come home alone. Our team has fought the war in Ukraine from every seat that matters. We flew strike and reconnaissance drones through the most heavily contested airspace of the modern era, led elite drone warfare formations, integrated unmanned systems into special operations, and defended critical infrastructure as well as field positions against mass drone and missile attack. We commanded infantry at formation level in continuous frontline service and advised commanders at that same echelon on electronic warfare and drone warfare, where technology and tactics have to fuse or fail, and we held staff visibility over the drone war across every sector of the front, tracking what works today, what stopped working yesterday, and what is coming next.</p>
-        <p>That battlefield knowledge is uniquely paired with senior U.S. institutional experience. Our team includes general officers and former senior Pentagon officials who led defense policy at the highest levels, advised Secretaries of Defense, and served across Congress, the defense industry, and allied capitals. We know the battlefield, and we know the institutions that must now adapt to it.</p>
+      <div class="pillars origin-pillars">
+        <div class="pillar reveal">
+          <span class="designator">Operational cadre</span>
+          <h3>Every echelon of the drone war</h3>
+          <p>Omira's operational cadre is drawn from the very top of the Ukrainian fight: Army Corps of Engineers leadership, former members of Ukraine's most senior defense establishment, some of the most decorated battalion commanders of the war, and operators from its most elite drone and special operations formations, alongside staff officers who hold national-level visibility over the entire drone war. These are people still fighting and shaping that war, in continuous contact with it, tracking what works today, what stopped working yesterday, and what is coming next.</p>
+        </div>
+        <div class="pillar reveal">
+          <span class="designator">Leadership</span>
+          <h3>From the Pentagon to allied capitals</h3>
+          <p>That battlefield knowledge is uniquely paired with senior U.S. institutional experience. Our team includes general officers and former senior Pentagon officials who led defense policy at the highest levels, advised Secretaries of Defense, and served across Congress, the defense industry, and allied capitals.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -528,7 +558,7 @@ footer{padding:48px 0 56px}
     <div class="bg-art" aria-hidden="true" style="-webkit-mask-image:radial-gradient(ellipse 125% 125% at 55% 45%,#000 55%,transparent 97%);mask-image:radial-gradient(ellipse 125% 125% at 55% 45%,#000 55%,transparent 97%)"><svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"><circle cx="1040" cy="400" r="48"/><circle cx="1040" cy="400" r="130"/><circle cx="1040" cy="400" r="230"/><circle cx="1040" cy="400" r="330"/><line x1="620" y1="400" x2="1450" y2="400"/><line x1="1040" y1="20" x2="1040" y2="790"/><path d="M-20 150C340 140 740 190 1040 400"/><line x1="56" y1="155" x2="56" y2="143"/><line x1="161" y1="156" x2="162" y2="144"/><line x1="267" y1="162" x2="268" y2="150"/><line x1="373" y1="173" x2="375" y2="161"/><line x1="479" y1="188" x2="481" y2="177"/><line x1="583" y1="210" x2="586" y2="198"/><line x1="685" y1="238" x2="689" y2="226"/><line x1="785" y1="272" x2="789" y2="261"/><line x1="881" y1="314" x2="886" y2="303"/><line x1="972" y1="363" x2="979" y2="353"/><circle class="f" cx="1040" cy="400" r="4"/></svg></div>
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">Why Omira</span>
+        <span class="eyebrow eyebrow-lg">Why Omira</span>
         <h2>Provenance you can pressure-test</h2>
       </div>
       <div class="prov-list">
@@ -556,7 +586,7 @@ footer{padding:48px 0 56px}
   <section class="section" id="contact">
     <div class="wrap">
       <div class="contact reveal">
-        <span class="eyebrow">Contact</span>
+        <span class="eyebrow eyebrow-lg">Contact</span>
         <h2>Talk to the people who fought the problem</h2>
         <p>For defense organizations, allied governments, and partners: reach out to discuss capabilities, training, or collaboration.</p>
         <div class="contact-lines">
@@ -564,6 +594,15 @@ footer{padding:48px 0 56px}
           <a href="mailto:info@omirasystems.com">info@omirasystems.com</a>
           <span>Washington DC</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAME -->
+  <section class="section colophon-sec">
+    <div class="wrap">
+      <div class="colophon reveal">
+        <b>OMIRA</b>: from <b>M&iacute;mir</b>, the Norse embodiment of wisdom and knowledge earned through sacrifice, and <b>orrusta</b>, the Old Norse word for war.
       </div>
     </div>
   </section>
