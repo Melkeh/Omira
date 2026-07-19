@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Omira | UAS Warfare Technology &amp; Advisory</title>
-<meta name="description" content="Omira Systems develops counter-EW command and control, layered C-UAS sensing, and combat-informed training and advisory, built on direct experience from the war in Ukraine.">
+<meta name="description" content="Western militaries are standing up drone forces. Very few have cadre who have fought this war. Omira turns frontline lessons from Ukraine into allied readiness: combat-proven systems and the training and doctrine to employ them.">
 <meta property="og:title" content="Omira Systems">
 <meta property="og:description" content="We fought the drone war. Now we build for it. Counter-EW command and control, layered C-UAS sensing, and combat-informed training and advisory.">
 <meta property="og:type" content="website">
@@ -206,10 +206,48 @@ body::after{
   color:var(--lume);
   margin-top:40px;
 }
+.hero-problem{
+  font-family:var(--mono);
+  font-size:clamp(12px,1.3vw,14px);
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  color:var(--steel);
+  line-height:1.9;
+  margin-top:48px;
+}
+.hero-problem + .hero-verdict{margin-top:16px}
+.proof-strip{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+  border-radius:2px;overflow:hidden;
+  margin-bottom:80px;
+}
+.proof-cell{
+  background:var(--surface);
+  padding:28px 32px;
+}
+.proof-cell b{
+  display:block;
+  font-family:var(--mono);
+  font-size:clamp(22px,2.6vw,30px);
+  font-weight:500;
+  color:var(--lume);
+}
+.proof-cell b .live{color:var(--amber);animation:pulse-dot 1.8s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.proof-cell b .live{animation:none}}
+.proof-cell span{
+  display:block;margin-top:8px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--steel);
+  line-height:1.8;
+}
+@media (max-width:860px){.proof-strip{grid-template-columns:1fr}}
 .hero-sub{
   color:var(--haze);
   font-size:clamp(15px,1.8vw,17px);
-  max-width:56ch;
+  max-width:64ch;
   margin-top:24px;
 }
 /* FIG 01: link survival under jamming. Amber marks the answer. */
@@ -377,8 +415,9 @@ footer{padding:48px 0 56px}
         <h1>OMIRA</h1>
         <span class="eyebrow hero-kicker">UAS Warfare Technology &amp; Advisory</span>
       </div>
+      <p class="hero-problem">The West is racing to stand up drone forces.<br>Almost none have cadre who have fought this war.</p>
       <p class="hero-verdict">We fought the drone war.<br>Now we build for it.</p>
-      <p class="hero-sub">Omira develops counter-EW command and control, layered C-UAS sensing, and combat-informed training and advisory, built on direct experience from the battlefields of Ukraine.</p>
+      <p class="hero-sub">Omira turns lessons paid for at the front in Ukraine into allied readiness, from communications and sensing that survive the spectrum fight to the training and doctrine that build a force able to win under drone-saturated skies.</p>
 
       <div class="spectrum-wrap" aria-hidden="true">
         <div class="spectrum-label">
@@ -394,6 +433,22 @@ footer{padding:48px 0 56px}
   <!-- ABOUT / ORIGIN -->
   <section class="section" id="about">
     <div class="bg-art" aria-hidden="true" style="-webkit-mask-image:radial-gradient(ellipse 120% 120% at 50% 48%,#000 55%,transparent 97%);mask-image:radial-gradient(ellipse 120% 120% at 50% 48%,#000 55%,transparent 97%)"><svg viewBox="0 0 1440 740" preserveAspectRatio="xMidYMid slice"><path d="M-20 225L340 196L820 185L1460 235"/><path d="M340 190L346 196L340 202L334 196Z"/><path d="M820 179L826 185L820 191L814 185Z"/><path stroke-dasharray="10 8" d="M-20 505L430 470L950 495L1460 420"/><path d="M430 464L436 470L430 476L424 470Z"/><path d="M950 489L956 495L950 501L944 495Z"/><g transform="translate(430 540) scale(0.85)"><path d="M0 0L14 -36L20 -110L16 -210L22 -300L34 -392L0 -344L-34 -392L-22 -300L-16 -210L-20 -110L-14 -36Z"/><path d="M0 -36L20 -110L0 -210L22 -300"/><path d="M0 -36L-20 -110L0 -210L-22 -300"/><line x1="0" y1="-210" x2="0" y2="-344"/><path d="M0 -20L7 -30L0 -40L-7 -30Z"/><path d="M19 -122L128 -196L212 -372L150 -300L162 -326L100 -244L110 -266L21 -152Z"/><line x1="26" y1="-136" x2="200" y2="-360"/><path d="M-19 -122L-128 -196L-212 -372L-150 -300L-162 -326L-100 -244L-110 -266L-21 -152Z"/><line x1="-26" y1="-136" x2="-200" y2="-360"/></g><g transform="translate(1085 460) scale(0.56) rotate(-28)"><path d="M0 0L14 -36L20 -110L16 -210L22 -300L34 -392L0 -344L-34 -392L-22 -300L-16 -210L-20 -110L-14 -36Z"/><path d="M0 -36L20 -110L0 -210L22 -300"/><path d="M0 -36L-20 -110L0 -210L-22 -300"/><line x1="0" y1="-210" x2="0" y2="-344"/><path d="M0 -20L7 -30L0 -40L-7 -30Z"/><path d="M19 -122L128 -196L212 -372L150 -300L162 -326L100 -244L110 -266L21 -152Z"/><line x1="26" y1="-136" x2="200" y2="-360"/><path d="M-19 -122L-128 -196L-212 -372L-150 -300L-162 -326L-100 -244L-110 -266L-21 -152Z"/><line x1="-26" y1="-136" x2="-200" y2="-360"/></g></svg></div>
+    <div class="wrap">
+      <div class="proof-strip reveal">
+        <div class="proof-cell">
+          <b>40+</b>
+          <span>Combined years of frontline service in the Russo&ndash;Ukrainian War</span>
+        </div>
+        <div class="proof-cell">
+          <b>100+</b>
+          <span>Years across the U.S. military, the Pentagon, and the defense industry</span>
+        </div>
+        <div class="proof-cell">
+          <b><span class="live">&#9679;</span> Live</b>
+          <span>Operational cadre on the front line in Ukraine today</span>
+        </div>
+      </div>
+    </div>
     <div class="wrap origin">
       <div class="origin-name reveal">
         <b>OMIRA</b><br>
@@ -402,8 +457,9 @@ footer{padding:48px 0 56px}
         and <b>orrusta</b>, the Old Norse word for war.
       </div>
       <div class="origin-body reveal">
-        <p class="lede">Our team has fought the war in Ukraine from every seat that matters.</p>
-        <p>We flew strike and reconnaissance drones through the most heavily contested airspace of the modern era, led elite drone warfare formations, integrated unmanned systems into special operations, and defended critical infrastructure as well as field positions against mass drone and missile attack. We commanded infantry at formation level in continuous frontline service and advised commanders at that same echelon on electronic warfare and drone warfare, where technology and tactics have to fuse or fail, and we held staff visibility over the drone war across every sector of the front, tracking what works today, what stopped working yesterday, and what is coming next.</p>
+        <p class="lede">Omira began on the front line.</p>
+        <p>Omira's founder went to Ukraine and served inside the drone war. Omira was built on a different conviction: more than another piece of hardware, allied militaries need the lessons that were already paid for at the front, delivered before their people have to pay for them again.</p>
+        <p>He did not come home alone. Our team has fought the war in Ukraine from every seat that matters. We flew strike and reconnaissance drones through the most heavily contested airspace of the modern era, led elite drone warfare formations, integrated unmanned systems into special operations, and defended critical infrastructure as well as field positions against mass drone and missile attack. We commanded infantry at formation level in continuous frontline service and advised commanders at that same echelon on electronic warfare and drone warfare, where technology and tactics have to fuse or fail, and we held staff visibility over the drone war across every sector of the front, tracking what works today, what stopped working yesterday, and what is coming next.</p>
         <p>That battlefield knowledge is uniquely paired with senior U.S. institutional experience. Our team includes general officers and former senior Pentagon officials who led defense policy at the highest levels, advised Secretaries of Defense, and served across Congress, the defense industry, and allied capitals. We know the battlefield, and we know the institutions that must now adapt to it.</p>
       </div>
     </div>
@@ -482,7 +538,7 @@ footer{padding:48px 0 56px}
         </div>
         <div class="prov-item reveal">
           <span class="k">Operationally current</span>
-          <span class="v"><b>The threat evolves constantly. So do we.</b> Continuous contact with the operational environment keeps our understanding of drone warfare and the electromagnetic fight current, not archival.</span>
+          <span class="v"><b>The threat evolves constantly. So do we.</b> Members of our operational cadre are serving in Ukraine today, keeping our understanding of drone warfare and the electromagnetic fight current, not archival.</span>
         </div>
         <div class="prov-item reveal">
           <span class="k">End-to-end</span>
@@ -504,7 +560,7 @@ footer{padding:48px 0 56px}
         <h2>Talk to the people who fought the problem</h2>
         <p>For defense organizations, allied governments, and partners: reach out to discuss capabilities, training, or collaboration.</p>
         <div class="contact-lines">
-          <span>General inquiries</span>
+          <span>Request a briefing</span>
           <a href="mailto:info@omirasystems.com">info@omirasystems.com</a>
           <span>Washington DC</span>
         </div>
